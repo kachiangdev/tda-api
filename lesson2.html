@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 2: Variables and Data Types - Python Learning Course</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>🐍 Python Course</h2>
+                <a href="index.html">← Back to Course</a>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="lesson1.html" class="lesson-link">
+                    <div class="lesson-number">1</div>
+                    <span>Running Python Online & Printing</span>
+                </a>
+                <a href="lesson2.html" class="lesson-link active">
+                    <div class="lesson-number">2</div>
+                    <span>Variables and Data Types</span>
+                </a>
+                <a href="lesson3.html" class="lesson-link">
+                    <div class="lesson-number">3</div>
+                    <span>Basic Arithmetic</span>
+                </a>
+                <a href="lesson4.html" class="lesson-link">
+                    <div class="lesson-number">4</div>
+                    <span>String Manipulation</span>
+                </a>
+                <a href="lesson5.html" class="lesson-link">
+                    <div class="lesson-number">5</div>
+                    <span>Input from User</span>
+                </a>
+                <a href="lesson6.html" class="lesson-link">
+                    <div class="lesson-number">6</div>
+                    <span>Conditions and If-Else</span>
+                </a>
+                <a href="lesson7.html" class="lesson-link">
+                    <div class="lesson-number">7</div>
+                    <span>Number Guessing Game</span>
+                </a>
+                <a href="lesson8.html" class="lesson-link">
+                    <div class="lesson-number">8</div>
+                    <span>Lists</span>
+                </a>
+                <a href="lesson9.html" class="lesson-link">
+                    <div class="lesson-number">9</div>
+                    <span>Loops</span>
+                </a>
+                <a href="lesson10.html" class="lesson-link">
+                    <div class="lesson-number">10</div>
+                    <span>Functions</span>
+                </a>
+                <a href="lesson11.html" class="lesson-link">
+                    <div class="lesson-number">11</div>
+                    <span>Dictionaries</span>
+                </a>
+                <a href="lesson12.html" class="lesson-link">
+                    <div class="lesson-number">12</div>
+                    <span>Simple Error Handling</span>
+                </a>
+                <a href="lesson13.html" class="lesson-link">
+                    <div class="lesson-number">13</div>
+                    <span>Text Adventure Game</span>
+                </a>
+                <a href="lesson14.html" class="lesson-link">
+                    <div class="lesson-number">14</div>
+                    <span>Mini Quiz Game</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content">
+                <div class="lesson-header">
+                    <h1>Lesson 2: Variables and Data Types</h1>
+                    <p class="goal">Store data in variables and inspect types.</p>
+                </div>
+
+                <div class="lesson-section">
+                    <h2>📦 What are Variables?</h2>
+                    <p>Variables are containers that store data values. Think of them as labeled boxes where you can put different types of information.</p>
+                    
+                    <div class="info-box">
+                        <h3>🎯 Variable Rules</h3>
+                        <ul>
+                            <li>Must start with a letter or underscore</li>
+                            <li>Can contain letters, numbers, and underscores</li>
+                            <li>Case-sensitive (name ≠ Name)</li>
+                            <li>Cannot use Python keywords</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lesson-section">
+                    <h2>🔤 Creating Variables</h2>
+                    <p>In Python, you create variables by assigning values to them using the <code>=</code> operator:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Creating variables
+name = "Alice"
+age = 25
+height = 1.75
+is_student = True
+
+# Printing variables
+print("Name:", name)
+print("Age:", age)
+print("Height:", height, "meters")
+print("Is student:", is_student)</code></pre>
+                    </div>
+                </div>
+
+                <div class="lesson-section">
+                    <h2>📊 Data Types</h2>
+                    <p>Python has several built-in data types. Here are the most common ones:</p>
+                    
+                    <div class="data-types-grid">
+                        <div class="data-type-item">
+                            <h3>🔢 Integers (int)</h3>
+                            <p>Whole numbers (positive, negative, or zero)</p>
+                            <div class="code-block">
+                                <pre><code>x = 10
+y = -5
+z = 0</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="data-type-item">
+                            <h3>📏 Floats (float)</h3>
+                            <p>Decimal numbers</p>
+                            <div class="code-block">
+                                <pre><code>pi = 3.14
+temperature = 98.6
+height = 1.75</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="data-type-item">
+                            <h3>🔤 Strings (str)</h3>
+                            <p>Text enclosed in quotes</p>
+                            <div class="code-block">
+                                <pre><code>name = "John"
+message = 'Hello, World!'
+text = """Multi-line
+string"""</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="data-type-item">
+                            <h3>✅ Booleans (bool)</h3>
+                            <p>True or False values</p>
+                            <div class="code-block">
+                                <pre><code>is_active = True
+is_finished = False</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-section">
+                    <h2>🔍 Checking Data Types</h2>
+                    <p>You can check the type of a variable using the <code>type()</code> function:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Different data types
+x = 10
+y = 3.14
+text = "Hello"
+flag = False
+
+# Checking types
+print("Type of x:", type(x))
+print("Type of y:", type(y))
+print("Type of text:", type(text))
+print("Type of flag:", type(flag))</code></pre>
+                    </div>
+                    
+                    <div class="output-example">
+                        <h4>Output:</h4>
+                        <pre><code>&lt;class 'int'&gt;
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;
+&lt;class 'bool'&gt;</code></pre>
+                    </div>
+                </div>
+
+                <div class="lesson-section">
+                    <h2>🔄 Type Conversion</h2>
+                    <p>You can convert between different data types using built-in functions:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Converting between types
+number_string = "42"
+number = int(number_string)  # Convert string to integer
+print("Number:", number, type(number))
+
+float_number = 3.14
+int_number = int(float_number)  # Convert float to integer
+print("Integer:", int_number)
+
+number = 123
+string_number = str(number)  # Convert integer to string
+print("String:", string_number, type(string_number))</code></pre>
+                    </div>
+                </div>
+
+                <div class="lesson-section">
+                    <h2>🎯 Practice Exercises</h2>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 1: Variable Creation</h3>
+                        <p>Create variables for your personal information (name, age, favorite number, and whether you like programming).</p>
+                        <div class="hint">
+                            <strong>Hint:</strong> Use appropriate data types for each piece of information.
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 2: Type Checking</h3>
+                        <p>Create different types of variables and use <code>type()</code> to check their data types.</p>
+                        <div class="hint">
+                            <strong>Hint:</strong> Try creating an integer, float, string, and boolean variable.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-section">
+                    <h2>🏆 Challenge</h2>
+                    <div class="challenge">
+                        <h3>Challenge: Temperature Converter</h3>
+                        <p>Create a program that converts Celsius to Fahrenheit. Use variables to store the Celsius temperature and the conversion formula: <code>F = C × 9/5 + 32</code></p>
+                        <div class="hint">
+                            <strong>Hint:</strong> Use float for the temperature values since they can be decimal numbers.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav">
+                    <a href="lesson1.html" class="nav-button prev">Previous: Introduction to Python</a>
+                    <a href="lesson3.html" class="nav-button next">Next: Operators</a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Python Runner Frame -->
+        <div class="python-runner-frame">
+            <div class="runner-header">
+                <h3>🐍 Python Editor</h3>
+                <button class="runner-toggle" onclick="togglePythonRunner()">◀</button>
+            </div>
+            <div class="runner-content">
+                <div class="runner-editor">
+                    <textarea id="pythonCode" class="code-editor" placeholder="Enter your Python code here..."></textarea>
+                </div>
+                <div class="runner-controls">
+                    <button class="run-button" onclick="runPythonCode()">
+                        <span>▶️ Run Code</span>
+                    </button>
+                    <button class="clear-button" onclick="clearPythonCode()">
+                        🗑️ Clear
+                    </button>
+                </div>
+                <div class="runner-output">
+                    <div class="output-header">
+                        <h4>Output:</h4>
+                    </div>
+                    <div id="output" class="output-display">
+                        <em>Click "Run Code" to see the output here</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

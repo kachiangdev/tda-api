@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 3: Basic Arithmetic - Python Learning Course</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>🐍 Python Course</h2>
+                <a href="index.html">← Back to Course</a>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="lesson1.html" class="lesson-link">
+                    <div class="lesson-number">1</div>
+                    <span>Running Python Online & Printing</span>
+                </a>
+                <a href="lesson2.html" class="lesson-link">
+                    <div class="lesson-number">2</div>
+                    <span>Variables and Data Types</span>
+                </a>
+                <a href="lesson3.html" class="lesson-link active">
+                    <div class="lesson-number">3</div>
+                    <span>Basic Arithmetic</span>
+                </a>
+                <a href="lesson4.html" class="lesson-link">
+                    <div class="lesson-number">4</div>
+                    <span>String Manipulation</span>
+                </a>
+                <a href="lesson5.html" class="lesson-link">
+                    <div class="lesson-number">5</div>
+                    <span>Input from User</span>
+                </a>
+                <a href="lesson6.html" class="lesson-link">
+                    <div class="lesson-number">6</div>
+                    <span>Conditions and If-Else</span>
+                </a>
+                <a href="lesson7.html" class="lesson-link">
+                    <div class="lesson-number">7</div>
+                    <span>Number Guessing Game</span>
+                </a>
+                <a href="lesson8.html" class="lesson-link">
+                    <div class="lesson-number">8</div>
+                    <span>Lists</span>
+                </a>
+                <a href="lesson9.html" class="lesson-link">
+                    <div class="lesson-number">9</div>
+                    <span>Loops</span>
+                </a>
+                <a href="lesson10.html" class="lesson-link">
+                    <div class="lesson-number">10</div>
+                    <span>Functions</span>
+                </a>
+                <a href="lesson11.html" class="lesson-link">
+                    <div class="lesson-number">11</div>
+                    <span>Dictionaries</span>
+                </a>
+                <a href="lesson12.html" class="lesson-link">
+                    <div class="lesson-number">12</div>
+                    <span>Simple Error Handling</span>
+                </a>
+                <a href="lesson13.html" class="lesson-link">
+                    <div class="lesson-number">13</div>
+                    <span>Text Adventure Game</span>
+                </a>
+                <a href="lesson14.html" class="lesson-link">
+                    <div class="lesson-number">14</div>
+                    <span>Mini Quiz Game</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content">
+                <div class="lesson-header">
+                    <h1>Lesson 3: Operators</h1>
+                    <p class="goal">Perform mathematical operations.</p>
+                </div>
+
+                <div class="lesson-section">
+                    <h2>🔢 Arithmetic Operators</h2>
+                    <p>Arithmetic operators are used to perform mathematical operations on numbers.</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Basic arithmetic
+a = 10
+b = 3
+
+print("Addition:", a + b)
+print("Subtraction:", a - b)
+print("Multiplication:", a * b)
+print("Division:", a / b)
+print("Floor division:", a // b)
+print("Modulus:", a % b)
+print("Exponentiation:", a ** b)</code></pre>
+                    </div>
+                </div>
+
+                <div class="lesson-section">
+                    <h2>🔤 String Operators</h2>
+                    <p>Strings can be combined and repeated using operators.</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># String operations
+first_name = "John"
+last_name = "Doe"
+full_name = first_name + " " + last_name
+print("Full name:", full_name)
+
+# String repetition
+separator = "-" * 20
+print(separator)
+print("Repeated text:", "Python! " * 3)</code></pre>
+                    </div>
+                </div>
+
+                <div class="lesson-section">
+                    <h2>🎯 Practice Exercises</h2>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 1: Calculator</h3>
+                        <p>Create variables for two numbers and perform all arithmetic operations on them.</p>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 2: String Manipulation</h3>
+                        <p>Create a program that combines your first and last name, then repeats your first name 3 times.</p>
+                    </div>
+                </div>
+
+                <div class="lesson-section">
+                    <h2>🏆 Challenge</h2>
+                    <div class="challenge">
+                        <h3>Challenge: Area Calculator</h3>
+                        <p>Calculate the area of a rectangle using length and width variables. Then calculate the area of a circle using the radius.</p>
+                    </div>
+                </div>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav">
+                    <a href="lesson2.html" class="nav-button prev">Previous: Variables and Data Types</a>
+                    <a href="lesson4.html" class="nav-button next">Next: Comparison and Logical Operators</a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Python Runner Frame -->
+        <div class="python-runner-frame">
+            <div class="runner-header">
+                <h3>🐍 Python Editor</h3>
+                <button class="runner-toggle" onclick="togglePythonRunner()">◀</button>
+            </div>
+            <div class="runner-content">
+                <div class="runner-editor">
+                    <textarea id="pythonCode" class="code-editor" placeholder="Enter your Python code here..."></textarea>
+                </div>
+                <div class="runner-controls">
+                    <button class="run-button" onclick="runPythonCode()">
+                        <span>▶️ Run Code</span>
+                    </button>
+                    <button class="clear-button" onclick="clearPythonCode()">
+                        🗑️ Clear
+                    </button>
+                </div>
+                <div class="runner-output">
+                    <div class="output-header">
+                        <h4>Output:</h4>
+                    </div>
+                    <div id="output" class="output-display">
+                        <em>Click "Run Code" to see the output here</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 10: Functions - Python Learning Course</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>🐍 Python Course</h2>
+                <a href="index.html">← Back to Course</a>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="lesson1.html" class="lesson-link">
+                    <div class="lesson-number">1</div>
+                    <span>Running Python Online & Printing</span>
+                </a>
+                <a href="lesson2.html" class="lesson-link">
+                    <div class="lesson-number">2</div>
+                    <span>Variables and Data Types</span>
+                </a>
+                <a href="lesson3.html" class="lesson-link">
+                    <div class="lesson-number">3</div>
+                    <span>Basic Arithmetic</span>
+                </a>
+                <a href="lesson4.html" class="lesson-link">
+                    <div class="lesson-number">4</div>
+                    <span>String Manipulation</span>
+                </a>
+                <a href="lesson5.html" class="lesson-link">
+                    <div class="lesson-number">5</div>
+                    <span>Input from User</span>
+                </a>
+                <a href="lesson6.html" class="lesson-link">
+                    <div class="lesson-number">6</div>
+                    <span>Conditions and If-Else</span>
+                </a>
+                <a href="lesson7.html" class="lesson-link">
+                    <div class="lesson-number">7</div>
+                    <span>Number Guessing Game</span>
+                </a>
+                <a href="lesson8.html" class="lesson-link">
+                    <div class="lesson-number">8</div>
+                    <span>Lists</span>
+                </a>
+                <a href="lesson9.html" class="lesson-link">
+                    <div class="lesson-number">9</div>
+                    <span>Loops</span>
+                </a>
+                <a href="lesson10.html" class="lesson-link active">
+                    <div class="lesson-number">10</div>
+                    <span>Functions</span>
+                </a>
+                <a href="lesson11.html" class="lesson-link">
+                    <div class="lesson-number">11</div>
+                    <span>Dictionaries</span>
+                </a>
+                <a href="lesson12.html" class="lesson-link">
+                    <div class="lesson-number">12</div>
+                    <span>Simple Error Handling</span>
+                </a>
+                <a href="lesson13.html" class="lesson-link">
+                    <div class="lesson-number">13</div>
+                    <span>Text Adventure Game</span>
+                </a>
+                <a href="lesson14.html" class="lesson-link">
+                    <div class="lesson-number">14</div>
+                    <span>Mini Quiz Game</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content">
+                <div class="lesson-header">
+                    <h1>Lesson 10: Functions</h1>
+                    <p class="goal">Organize code into reusable blocks with functions.</p>
+                </div>
+
+                <div class="lesson-section">
+                    <h2>Introduction</h2>
+                    <p>Functions are reusable blocks of code that perform specific tasks.</p>
+                    <p>They help organize code and avoid repetition.</p>
+                </div>
+
+                <div class="lesson-section">
+                    <h2>Examples</h2>
+                    
+                    <h3>Example 1: Simple Function</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Defining a function
+def greet(name):
+    print(f"Hello, {name}!")
+
+# Calling the function
+greet("Alice")
+greet("Bob")</code></pre>
+                    </div>
+                    
+                    <h3>Example 2: Function with Return Value</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Function with parameters and return value
+def add_numbers(a, b):
+    return a + b
+
+result = add_numbers(5, 3)
+print("5 + 3 =", result)</code></pre>
+                    </div>
+                    
+                    <h3>Example 3: Function with Default Parameters</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Function with default parameters
+def greet_with_title(name, title="Mr."):
+    return f"Hello, {title} {name}!"
+
+print(greet_with_title("Smith"))
+print(greet_with_title("Johnson", "Dr."))</code></pre>
+                    </div>
+                    
+                    <h3>Example 4: Function with Multiple Return Values</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Function with multiple return values
+def get_name_and_age():
+    return "Alice", 25
+
+name, age = get_name_and_age()
+print("Name:", name, "Age:", age)</code></pre>
+                    </div>
+                </div>
+
+                <div class="lesson-section">
+                    <h2>Key Points</h2>
+                    <ul>
+                        <li><strong>def:</strong> Keyword to define a function</li>
+                        <li><strong>Parameters:</strong> Values passed to the function</li>
+                        <li><strong>return:</strong> Send value back from function</li>
+                        <li><strong>Default parameters:</strong> Values used if none provided</li>
+                        <li>Functions can return multiple values as tuples</li>
+                    </ul>
+                </div>
+
+                <div class="practice-box">
+                    <h3>🎯 Practice</h3>
+                    <p>Create a function that calculates the area of a rectangle given length and width.</p>
+                </div>
+
+                <div class="challenge-box">
+                    <h3>🚀 Extra Challenge</h3>
+                    <p>Create a function that returns multiple values.</p>
+                </div>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav">
+                    <a href="lesson9.html" class="nav-button prev">Previous: Loops</a>
+                    <a href="lesson11.html" class="nav-button next">Next: Dictionaries</a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Python Runner Frame -->
+        <div class="python-runner-frame">
+            <div class="runner-header">
+                <h3>🐍 Python Editor</h3>
+                <button class="runner-toggle" onclick="togglePythonRunner()">◀</button>
+            </div>
+            <div class="runner-content">
+                <div class="runner-editor">
+                    <textarea id="pythonCode" class="code-editor" placeholder="Enter your Python code here..."></textarea>
+                </div>
+                <div class="runner-controls">
+                    <button class="run-button" onclick="runPythonCode()">
+                        <span>▶️ Run Code</span>
+                    </button>
+                    <button class="clear-button" onclick="clearPythonCode()">
+                        🗑️ Clear
+                    </button>
+                </div>
+                <div class="runner-output">
+                    <div class="output-header">
+                        <h4>Output:</h4>
+                    </div>
+                    <div id="output" class="output-display">
+                        <em>Click "Run Code" to see the output here</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

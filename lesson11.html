@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 11: Dictionaries - Python Learning Course</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>🐍 Python Course</h2>
+                <a href="index.html">← Back to Course</a>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="lesson1.html" class="lesson-link">
+                    <div class="lesson-number">1</div>
+                    <span>Running Python Online & Printing</span>
+                </a>
+                <a href="lesson2.html" class="lesson-link">
+                    <div class="lesson-number">2</div>
+                    <span>Variables and Data Types</span>
+                </a>
+                <a href="lesson3.html" class="lesson-link">
+                    <div class="lesson-number">3</div>
+                    <span>Basic Arithmetic</span>
+                </a>
+                <a href="lesson4.html" class="lesson-link">
+                    <div class="lesson-number">4</div>
+                    <span>String Manipulation</span>
+                </a>
+                <a href="lesson5.html" class="lesson-link">
+                    <div class="lesson-number">5</div>
+                    <span>Input from User</span>
+                </a>
+                <a href="lesson6.html" class="lesson-link">
+                    <div class="lesson-number">6</div>
+                    <span>Conditions and If-Else</span>
+                </a>
+                <a href="lesson7.html" class="lesson-link">
+                    <div class="lesson-number">7</div>
+                    <span>Number Guessing Game</span>
+                </a>
+                <a href="lesson8.html" class="lesson-link">
+                    <div class="lesson-number">8</div>
+                    <span>Lists</span>
+                </a>
+                <a href="lesson9.html" class="lesson-link">
+                    <div class="lesson-number">9</div>
+                    <span>Loops</span>
+                </a>
+                <a href="lesson10.html" class="lesson-link">
+                    <div class="lesson-number">10</div>
+                    <span>Functions</span>
+                </a>
+                <a href="lesson11.html" class="lesson-link active">
+                    <div class="lesson-number">11</div>
+                    <span>Dictionaries</span>
+                </a>
+                <a href="lesson12.html" class="lesson-link">
+                    <div class="lesson-number">12</div>
+                    <span>Simple Error Handling</span>
+                </a>
+                <a href="lesson13.html" class="lesson-link">
+                    <div class="lesson-number">13</div>
+                    <span>Text Adventure Game</span>
+                </a>
+                <a href="lesson14.html" class="lesson-link">
+                    <div class="lesson-number">14</div>
+                    <span>Mini Quiz Game</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content">
+                <div class="lesson-header">
+                    <h1>Lesson 11: Dictionaries</h1>
+                    <p class="goal">Store key-value pairs.</p>
+                </div>
+
+                <div class="lesson-section">
+                    <h2>Introduction</h2>
+                    <p>Dictionaries map keys to values.</p>
+                </div>
+
+                <div class="lesson-section">
+                    <h2>Examples</h2>
+                    
+                    <h3>Example 1: Creating a Dictionary</h3>
+                    <div class="code-block">
+                        <pre><code>person = {"name": "Alice", "age": 25}
+print(person)</code></pre>
+                    </div>
+                    <p>This will output: <code>{'name': 'Alice', 'age': 25}</code></p>
+
+                    <h3>Example 2: Accessing Dictionary Values</h3>
+                    <div class="code-block">
+                        <pre><code>person = {"name": "Alice", "age": 25}
+print(person["name"])
+print(person["age"])</code></pre>
+                    </div>
+                    <p>This will output:</p>
+                    <div class="code-block">
+                        <pre><code>Alice
+25</code></pre>
+                    </div>
+
+                    <h3>Example 3: Adding New Key-Value Pairs</h3>
+                    <div class="code-block">
+                        <pre><code>person = {"name": "Alice", "age": 25}
+person["city"] = "New York"
+print(person)</code></pre>
+                    </div>
+                    <p>This will output: <code>{'name': 'Alice', 'age': 25, 'city': 'New York'}</code></p>
+                </div>
+
+                <div class="lesson-section">
+                    <h2>Dictionary Operations</h2>
+                    <ul>
+                        <li><code>dict[key]</code> - Access value by key</li>
+                        <li><code>dict[key] = value</code> - Add or update key-value pair</li>
+                        <li><code>dict.get(key)</code> - Safely access value (returns None if key doesn't exist)</li>
+                        <li><code>dict.keys()</code> - Get all keys</li>
+                        <li><code>dict.values()</code> - Get all values</li>
+                        <li><code>dict.items()</code> - Get all key-value pairs</li>
+                    </ul>
+                </div>
+
+                <div class="practice-box">
+                    <h3>🎯 Practice</h3>
+                    <p>Create a dictionary for a book (title, author, year).</p>
+                </div>
+
+                <div class="challenge-box">
+                    <h3>🚀 Extra Challenge</h3>
+                    <p>Create a dictionary of your favorite movies and their ratings.</p>
+                </div>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav">
+                    <a href="lesson10.html" class="nav-button prev">Previous: Functions</a>
+                    <a href="lesson12.html" class="nav-button next">Next: Simple Error Handling</a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Python Runner Frame -->
+        <div class="python-runner-frame">
+            <div class="runner-header">
+                <h3>🐍 Python Editor</h3>
+                <button class="runner-toggle" onclick="togglePythonRunner()">◀</button>
+            </div>
+            <div class="runner-content">
+                <div class="runner-editor">
+                    <textarea id="pythonCode" class="code-editor" placeholder="Enter your Python code here..."></textarea>
+                </div>
+                <div class="runner-controls">
+                    <button class="run-button" onclick="runPythonCode()">
+                        <span>▶️ Run Code</span>
+                    </button>
+                    <button class="clear-button" onclick="clearPythonCode()">
+                        🗑️ Clear
+                    </button>
+                </div>
+                <div class="runner-output">
+                    <div class="output-header">
+                        <h4>Output:</h4>
+                    </div>
+                    <div id="output" class="output-display">
+                        <em>Click "Run Code" to see the output here</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

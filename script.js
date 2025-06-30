@@ -1,3 +1,11 @@
+// Global function for Brython to call - defined immediately at script load
+window.addToOutput = function(text) {
+    if (window.pythonOutput === undefined) {
+        window.pythonOutput = '';
+    }
+    window.pythonOutput += text + '\n';
+};
+
 // Mobile menu toggle functionality
 document.addEventListener('DOMContentLoaded', function() {
     // Add mobile menu toggle button to all pages
@@ -88,7 +96,8 @@ document.addEventListener('DOMContentLoaded', function() {
         block.appendChild(copyButton);
     });
     
-    // Add keyboard navigation
+    // Add keyboard navigation - REMOVED
+    /*
     document.addEventListener('keydown', function(e) {
         // Left arrow key - previous lesson
         if (e.key === 'ArrowLeft' && !e.ctrlKey && !e.altKey) {
@@ -106,6 +115,18 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
+        // Escape key - close mobile menu
+        if (e.key === 'Escape') {
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar) {
+                sidebar.classList.remove('open');
+            }
+        }
+    });
+    */
+    
+    // Keep only the Escape key functionality for mobile menu
+    document.addEventListener('keydown', function(e) {
         // Escape key - close mobile menu
         if (e.key === 'Escape') {
             const sidebar = document.querySelector('.sidebar');
@@ -137,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const progressFill = document.createElement('div');
         progressFill.style.cssText = `
             height: 100%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+            background: linear-gradient(90deg, #666, #999);
             width: ${progress}%;
             transition: width 0.3s ease;
         `;
@@ -153,7 +174,56 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Load lesson-specific examples
     loadCurrentLessonExamples();
+    
+    // Initialize line numbers for code editor
+    initializeLineNumbers();
+    
+    // Add line numbers to code examples after a short delay (for all pages)
+    setTimeout(() => {
+        addLineNumbersToCodeExamples();
+    }, 200);
 });
+
+// Initialize line numbers functionality
+function initializeLineNumbers() {
+    const codeEditor = document.getElementById('pythonCode');
+    const lineNumbers = document.getElementById('lineNumbers');
+    
+    if (!codeEditor || !lineNumbers) return;
+    
+    // Update line numbers
+    function updateLineNumbers() {
+        const lines = codeEditor.value.split('\n');
+        const lineCount = lines.length;
+        
+        let lineNumbersText = '';
+        for (let i = 1; i <= lineCount; i++) {
+            lineNumbersText += i + '\n';
+        }
+        
+        lineNumbers.textContent = lineNumbersText.slice(0, -1); // Remove last newline
+    }
+    
+    // Sync scroll between line numbers and editor
+    function syncScroll() {
+        if (lineNumbers && codeEditor) {
+            lineNumbers.scrollTop = codeEditor.scrollTop;
+        }
+    }
+    
+    // Initialize line numbers
+    updateLineNumbers();
+    
+    // Add event listeners
+    codeEditor.addEventListener('input', updateLineNumbers);
+    codeEditor.addEventListener('scroll', syncScroll);
+    codeEditor.addEventListener('keydown', function(e) {
+        // Update line numbers after a brief delay for key events that change content
+        if (e.key === 'Enter' || e.key === 'Backspace' || e.key === 'Delete') {
+            setTimeout(updateLineNumbers, 10);
+        }
+    });
+}
 
 // Add CSS for new elements
 const style = document.createElement('style');
@@ -200,145 +270,203 @@ function clearPythonCode() {
 
 function loadLessonExamples(lessonNumber) {
     const codeEditor = document.getElementById('pythonCode');
-    const lessonCodeBlock = document.querySelector('.code-block');
+    const lessonCodeBlocks = document.querySelectorAll('.code-block');
     
     const examples = {
-        1: `# Try the examples from this lesson:
-
+        1: [
+            `print("Hello, World!")`,
+            `# Print a simple message
 print("Hello, World!")
 
+# Print multiple items
 print("Welcome", "to", "Python!")
 
+# Print with newlines
 print("Line 1\\nLine 2")`,
-        2: `# Try the examples from this lesson:
-
+            `Hello, World!
+Welcome to Python!
+Line 1
+Line 2`,
+            `# This is a comment
+print("This is code")`,
+            `print("This is a string")
+print('This is also a string')`,
+            `print("Hello")  # Function call`
+        ],
+        2: [
+            `# Creating variables
 name = "Alice"
-
 age = 25
-
 height = 1.75
-
 is_student = True
 
 print("Name:", name)
-
 print("Age:", age)
-
 print("Height:", height, "meters")
-
-print("Is student:", is_student)
-
-# Try different data types
-
+print("Is student:", is_student)`,
+            `x = 10
+print("Integer:", x)
+print("Type:", type(x))`,
+            `pi = 3.14
+print("Float:", pi)
+print("Type:", type(pi))`,
+            `name = "John"
+print("String:", name)
+print("Type:", type(name))`,
+            `is_active = True
+print("Boolean:", is_active)
+print("Type:", type(is_active))`,
+            `# Different data types
 x = 10
-
 y = 3.14
-
 text = "Hello"
-
 flag = False
 
-print("Integer:", x)
+print("Integer:", x, type(x))
+print("Float:", y, type(y))
+print("String:", text, type(text))
+print("Boolean:", flag, type(flag))`,
+            `# Converting between types
+number = "42"
+converted = int(number)
+print("Original:", number, type(number))
+print("Converted:", converted, type(converted))`,
+            `# More type conversions
+text = "3.14"
+float_num = float(text)
+print("String to float:", float_num)
 
-print("Float:", y)
-
-print("String:", text)
-
-print("Boolean:", flag)`,
-        3: `# Try the examples from this lesson:
-
-# Basic arithmetic
-
+number = 42
+text_num = str(number)
+print("Number to string:", text_num, type(text_num))`,
+            `# Variable assignment
+name = "Alice"
+age = 25`,
+            `# Type checking
+x = 42
+print(type(x))`,
+            `# Type conversion
+text = "123"
+number = int(text)
+print(number)`
+        ],
+        3: [
+            `# Basic arithmetic
 a = 10
-
 b = 3
 
 print("Addition:", a + b)
-
 print("Subtraction:", a - b)
-
 print("Multiplication:", a * b)
-
 print("Division:", a / b)
-
 print("Floor division:", a // b)
-
 print("Modulus:", a % b)
-
-print("Exponentiation:", a ** b)
-
-# String operations
-
+print("Exponentiation:", a ** b)`,
+            `# String operations
 first_name = "John"
-
 last_name = "Doe"
-
 full_name = first_name + " " + last_name
-
 print("Full name:", full_name)
 
 # String repetition
-
 separator = "-" * 20
-
 print(separator)
-
 print("Repeated text:", "Python! " * 3)`,
-        4: `# Try the examples from this lesson:
-
-# String manipulation
-
-first = "Alice"
-
-last = "Smith"
-
+            `# Addition & Subtraction
+x = 15
+y = 7
+print(x + y)  # 22
+print(x - y)  # 8`,
+            `# Multiplication & Division
+a = 12
+b = 4
+print(a * b)   # 48
+print(a / b)   # 3.0
+print(a % 5)   # 2 (remainder)`,
+            `# String operations
+greeting = "Hello"
+name = "World"
+message = greeting + " " + name
+print(message)
+print("Python! " * 3)`
+        ],
+        4: [
+            `# You can use either single or double quotes
+first = "Alice"    # Double quotes
+last = 'Smith'     # Single quotes
 print(first + " " + last)
 
-text = "hello world"
-
+# Both work the same way
+message1 = "Hello World"
+message2 = 'Hello World'
+print(message1)
+print(message2)`,
+            `text = "hello world"
 print(text.upper())
-
-print(text.capitalize())
-
-name = "Alice"
-
+print(text.capitalize())`,
+            `HELLO WORLD
+Hello World`,
+            `name = "Alice"
 age = 25
-
 print(f"{name} is {age} years old")`,
-        5: `# Try the examples from this lesson:
-
-# Getting input from user
-
-name = input("What is your name? ")
-
-age = input("How old are you? ")
-
-print(f"Hello, {name}! You are {age} years old.")
-
-# Converting input to numbers
-
-birth_year = int(input("What year were you born? "))
-
-current_year = 2024
-
-age_calculated = current_year - birth_year
-
-print(f"You are approximately {age_calculated} years old.")`,
-        6: `# Try the examples from this lesson:
-
-# Conditions and if-else
-
-age = 18
-
+            `# String concatenation
+first = "John"
+last = "Doe"
+full = first + " " + last
+print(full)`,
+            `# String methods
+text = "python programming"
+print(text.upper())
+print(text.capitalize())
+print(text.title())`,
+            `# Escaping quotes and special characters
+quote1 = "She said, \\"Hello there!\\""
+quote2 = 'It\\'s a beautiful day!'
+newline = "Line 1\\nLine 2"
+print(quote1)
+print(quote2)
+print(newline)`,
+            `# F-string formatting
+name = "Alice"
+age = 30
+score = 95.5
+print(f"Hi, I'm {name} and I'm {age}")
+print(f"My score is {score}%")`
+        ],
+        5: [
+            `name = input("Enter your name: ")
+print("Hello, " + name + "!")`,
+            `age = int(input("Enter your age: "))
+print("You are", age, "years old.")`,
+            `num = int(input("Number: "))
+result = num * 2
+print("Double:", result)`,
+            `# Getting input
+name = input("What's your name? ")
+print("Nice to meet you,", name)`,
+            `# Converting input
+age_text = input("How old are you? ")
+age = int(age_text)
+print("Age:", age)`,
+            `# Using input in calculations
+x = int(input("Enter a number: "))
+result = x * 3
+print("Triple:", result)`
+        ],
+        6: [
+            `age = 20
 if age >= 18:
     print("You are an adult.")
 else:
-    print("You are a minor.")
-
-# Multiple conditions
-
-score = 85
-
+    print("You are a minor.")`,
+            `num = -3
+if num > 0:
+    print("Positive number")
+elif num < 0:
+    print("Negative number")
+else:
+    print("Zero")`,
+            `score = 85
 if score >= 90:
     print("Grade: A")
 elif score >= 80:
@@ -346,168 +474,170 @@ elif score >= 80:
 elif score >= 70:
     print("Grade: C")
 else:
-    print("Grade: F")
-
-# Checking if a number is even or odd
-
+    print("Grade: F")`,
+            `# If statement
+temperature = 25
+if temperature > 20:
+    print("It's warm!")`,
+            `# If-else statement
 number = 7
-
 if number % 2 == 0:
-    print(f"{number} is even")
+    print("Even")
 else:
-    print(f"{number} is odd")`,
-        7: `# Try the examples from this lesson:
-
-import random
-
-# Number guessing game
-
-secret_number = random.randint(1, 10)
-
-attempts = 0
-
-max_attempts = 3
-
-print("I'm thinking of a number between 1 and 10.")
-
-while attempts < max_attempts:
-    guess = int(input("Enter your guess: "))
-    attempts += 1
-    
-    if guess == secret_number:
-        print(f"Congratulations! You guessed it in {attempts} attempts!")
-        break
-    elif guess < secret_number:
-        print("Too low! Try again.")
-    else:
-        print("Too high! Try again.")
-    
-    if attempts == max_attempts:
-        print(f"Game over! The number was {secret_number}.")`,
-        8: `# Try the examples from this lesson:
-
-# Working with lists
-
-fruits = ["apple", "banana", "orange"]
-
-print("Fruits:", fruits)
-
-# Adding items
-
-fruits.append("grape")
-
-print("After adding grape:", fruits)
-
-# Accessing items
-
-print("First fruit:", fruits[0])
-
-print("Last fruit:", fruits[-1])
-
-# List length
-
-print("Number of fruits:", len(fruits))
-
-# Removing items
-
-fruits.remove("banana")
-
-print("After removing banana:", fruits)`,
-        9: `# Try the examples from this lesson:
-
-# For loops
-
-fruits = ["apple", "banana", "orange"]
-
-for fruit in fruits:
-    print(f"I like {fruit}")
-
-# While loops
-
+    print("Odd")`,
+            `# If-elif-else chain
+grade = 85
+if grade >= 90:
+    print("A")
+elif grade >= 80:
+    print("B")
+else:
+    print("C")`
+        ],
+        7: [
+            `# Simple while loop example
 count = 1
-
 while count <= 5:
     print(f"Count: {count}")
     count += 1
 
-# Range function
-
+print("Loop finished!")`,
+            `# Random numbers
+import random
+number = random.randint(1, 10)
+print("Random number:", number)`,
+            `# While loop
+count = 1
+while count <= 3:
+    print("Attempt", count)
+    count += 1`,
+            `# Break statement
+while True:
+    answer = input("Type 'quit' to exit: ")
+    if answer == "quit":
+        break
+    print("You typed:", answer)`
+        ],
+        8: [
+            `fruits = ["apple", "banana", "cherry"]
+print("Fruits:", fruits)`,
+            `fruits = ["apple", "banana", "cherry"]
+fruits.append("grape")
+print("After adding grape:", fruits)`,
+            `fruits = ["apple", "banana", "cherry"]
+print("First fruit:", fruits[0])
+print("Last fruit:", fruits[-1])`,
+            `fruits = ["apple", "banana", "cherry"]
+print("Number of fruits:", len(fruits))`,
+            `# Creating lists
+colors = ["red", "green", "blue"]
+numbers = [1, 2, 3, 4, 5]
+print(colors)`,
+            `# Accessing elements
+animals = ["cat", "dog", "bird"]
+print("First:", animals[0])
+print("Second:", animals[1])`,
+            `# Adding elements
+pets = ["cat", "dog"]
+pets.append("fish")
+print("Updated list:", pets)`
+        ],
+        9: [
+            `for i in range(5):
+    print(f"Number: {i}")`,
+            `0
+1
+2
+3
+4`,
+            `for fruit in ["apple", "banana"]:
+    print(f"I like {fruit}")`,
+            `apple
+banana`,
+            `numbers = [1, 2, 3]
+for num in numbers:
+    print(num * 2)`,
+            `# Range loops
 for i in range(3):
-    print(f"Number: {i}")
-
-# Loop with range
-
-for i in range(1, 6):
-    print(f"Step {i}")`,
-        10: `# Try the examples from this lesson:
-
-# Defining functions
-
+    print("Hello", i)`,
+            `# List loops
+fruits = ["apple", "banana"]
+for fruit in fruits:
+    print("Fruit:", fruit)`,
+            `# Loop calculations
+total = 0
+for num in [1, 2, 3, 4]:
+    total += num
+print("Sum:", total)`
+        ],
+        10: [
+            `# Defining a function
 def greet(name):
     print(f"Hello, {name}!")
 
-# Calling functions
-
+# Calling the function
 greet("Alice")
-
-greet("Bob")
-
-# Function with return value
-
+greet("Bob")`,
+            `# Function with parameters and return value
 def add_numbers(a, b):
     return a + b
 
 result = add_numbers(5, 3)
-
-print("Sum:", result)
-
-# Function with default parameters
-
+print("Sum:", result)`,
+            `# Function with default parameters
 def greet_with_title(name, title="Mr."):
     print(f"Hello, {title} {name}!")
 
 greet_with_title("Smith")
-
 greet_with_title("Johnson", "Dr.")`,
-        11: `# Try the examples from this lesson:
+            `# Function with multiple return values
+def get_name_and_age():
+    return "Alice", 25
 
-# Creating dictionaries
+name, age = get_name_and_age()
+print(f"Name: {name}, Age: {age}")`,
+            `# Defining functions
+def say_hello():
+    print("Hello!")
 
-person = {
-    "name": "Alice",
-    "age": 25,
-    "city": "New York"
-}
+say_hello()`,
+            `# Return values
+def multiply(x, y):
+    return x * y
 
-print("Person:", person)
+result = multiply(4, 5)
+print(result)`,
+            `# Parameters
+def greet_person(name, age):
+    print(f"Hi {name}, you are {age}")
 
-# Accessing values
-
+greet_person("Alice", 25)`
+        ],
+        11: [
+            `person = {"name": "Alice", "age": 25}
+print("Person:", person)`,
+            `person = {"name": "Alice", "age": 25}
 print("Name:", person["name"])
-
-print("Age:", person["age"])
-
-# Adding new key-value pairs
-
+print("Age:", person["age"])`,
+            `person = {"name": "Alice", "age": 25}
 person["job"] = "Engineer"
-
-print("After adding job:", person)
-
-# Updating values
-
+print("After adding job:", person)`,
+            `person = {"name": "Alice", "age": 25}
 person["age"] = 26
-
-print("After updating age:", person)
-
-# Dictionary methods
-
-print("Keys:", list(person.keys()))
-
-print("Values:", list(person.values()))`,
-        12: `# Try the examples from this lesson:
-
-# Basic error handling
-
+print("After updating age:", person)`,
+            `# Creating dictionaries
+student = {"name": "Bob", "grade": 85}
+print(student)`,
+            `# Accessing values
+car = {"brand": "Toyota", "year": 2020}
+print("Brand:", car["brand"])`,
+            `# Adding/updating
+book = {"title": "Python Guide"}
+book["author"] = "Jane Doe"
+print(book)`
+        ],
+        12: [
+            `# Basic exception handling
 try:
     number = int(input("Enter a number: "))
     result = 10 / number
@@ -517,10 +647,8 @@ except ValueError:
 except ZeroDivisionError:
     print("Error: Cannot divide by zero.")
 except Exception as e:
-    print(f"An error occurred: {e}")
-
-# File handling with error handling
-
+    print(f"An error occurred: {e}")`,
+            `# Custom exception
 try:
     with open("example.txt", "r") as file:
         content = file.read()
@@ -529,109 +657,169 @@ except FileNotFoundError:
     print("Error: File not found.")
 except PermissionError:
     print("Error: Permission denied.")`,
-        13: `# Try the examples from this lesson:
-
-# Text adventure game
-
-def start_adventure():
-    print("=== THE MYSTERIOUS FOREST ===")
-    print("You find yourself at the edge of a dark forest.")
-    
-    choice = input("Do you enter the forest? (yes/no): ").lower()
-    
-    if choice == "yes":
-        print("You step into the forest. The trees close behind you.")
-        print("You come to a fork in the path.")
-        
-        direction = input("Do you go left or right? ").lower()
-        
-        if direction == "left":
-            print("You find a small cottage with a warm light inside.")
-            print("A friendly old woman opens the door.")
-            print("You have a wonderful evening and find your way home safely!")
-            print("🎉 HAPPY ENDING: You made a new friend!")
-        else:
-            print("You discover a beautiful clearing with a magical fountain.")
-            print("The water grants you the power of flight!")
-            print("🌟 MAGICAL ENDING: You gained special powers!")
+            `# Try-except blocks
+try:
+    x = int("abc")
+except ValueError:
+    print("Invalid number!")`,
+            `# Specific exceptions
+try:
+    result = 10 / 0
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
+except ValueError:
+    print("Invalid value!")`,
+            `# File handling
+try:
+    file = open("data.txt", "r")
+    content = file.read()
+except FileNotFoundError:
+    print("File not found!")`
+        ],
+        13: [
+            `# Simple function with conditional logic
+def check_weather(temperature):
+    if temperature > 25:
+        print("It's hot today!")
+    elif temperature > 15:
+        print("It's nice weather!")
     else:
-        print("You decide to stay at the edge of the forest.")
-        print("🌅 ENDING: A quiet evening.")
+        print("It's cold today!")
 
-# Start the adventure
+# Test the function
+check_weather(30)
+check_weather(20)
+check_weather(10)`,
+            `# Story branching
+choice = input("Go left or right? ")
+if choice == "left":
+    print("You found treasure!")
+else:
+    print("You met a dragon!")`,
+            `# User interaction
+name = input("What's your name? ")
+print(f"Welcome to the adventure, {name}!")`,
+            `# Game organization
+def start_game():
+    print("Welcome to the adventure!")
+    choice = input("Enter the cave? (y/n): ")
+    if choice == "y":
+        print("You're brave!")
 
-start_adventure()`,
-        14: `# Try the examples from this lesson:
+start_game()`
+        ],
+        14: [
+            `# Simple function with user input
+def greet_user():
+    name = input("What is your name? ")
+    print(f"Hello, {name}! Welcome to Python!")
 
-# Mini quiz game
-
-def ask_question(question, correct_answer):
-    print(f"\\n{question}")
-    user_answer = input("Your answer: ").lower().strip()
-    return user_answer == correct_answer.lower()
-
-def run_quiz():
-    score = 0
-    total_questions = 0
-    
-    print("Welcome to the Python Quiz!")
-    print("Answer the following questions:")
-    
-    # Question 1
-    if ask_question("What is the capital of France?", "Paris"):
-        print("Correct! 🎉")
-        score += 1
+# Call the function
+greet_user()`,
+            `# Score tracking
+score = 0
+correct_answers = 3
+total_questions = 5
+percentage = (correct_answers / total_questions) * 100
+print(f"Score: {percentage}%")`,
+            `# Question functions
+def ask_question(question, answer):
+    user_answer = input(question + " ")
+    if user_answer.lower() == answer.lower():
+        print("Correct!")
+        return 1
     else:
-        print("Wrong! The answer is Paris.")
-    total_questions += 1
-    
-    # Question 2
-    if ask_question("What is 2 + 2?", "4"):
-        print("Correct! 🎉")
-        score += 1
+        print("Wrong!")
+        return 0`,
+            `# Final results
+def show_results(score, total):
+    percentage = (score / total) * 100
+    print(f"Final score: {score}/{total}")
+    print(f"Percentage: {percentage}%")
+    if percentage >= 80:
+        print("Excellent!")
     else:
-        print("Wrong! The answer is 4.")
-    total_questions += 1
-    
-    # Final score
-    print(f"\\n🎯 Quiz Complete!")
-    print(f"You got {score} out of {total_questions} questions correct!")
-    
-    percentage = (score / total_questions) * 100
-    print(f"Your score: {percentage:.1f}%")
-
-# Run the quiz
-
-run_quiz()`
+        print("Keep practicing!")`
+        ]
     };
     
     if (examples[lessonNumber]) {
-        // Ensure proper line breaks are preserved
-        const exampleCode = examples[lessonNumber].replace(/\\n/g, '\n');
+        const lessonExamples = examples[lessonNumber];
         
-        // Load into code editor if it exists
-        if (codeEditor) {
-            codeEditor.value = exampleCode;
-            
-            // Force the textarea to update its display
-            codeEditor.style.height = 'auto';
-            codeEditor.style.height = codeEditor.scrollHeight + 'px';
-        }
+        // Code editor starts empty - no prepopulated code
         
-        // Load into lesson content code block if it exists
-        if (lessonCodeBlock) {
-            // Split code into lines and create numbered lines
-            const lines = exampleCode.split('\n');
-            const numberedLines = lines.map(line => `<span class="code-line">${line}</span>`).join('');
-            
-            // Add line numbers class and create the code block
-            lessonCodeBlock.classList.add('with-line-numbers');
-            lessonCodeBlock.innerHTML = '<code>' + numberedLines + '</code>';
-        }
+        // Load into lesson content code blocks
+        lessonCodeBlocks.forEach((codeBlock, index) => {
+            if (lessonExamples[index]) {
+                const exampleCode = lessonExamples[index].replace(/\\n/g, '\n');
+                // Set the text content directly
+                codeBlock.textContent = exampleCode;
+            }
+        });
     }
 }
 
-// Update the existing runPythonCode function to work with the new layout
+// Real Python interpreter using Brython
+let brythonLoaded = false;
+let brythonInitializing = false;
+
+// Initialize Brython
+async function initializePython() {
+    if (brythonLoaded) return; // Already initialized
+    if (brythonInitializing) return; // Already initializing
+    
+    brythonInitializing = true;
+    
+    try {
+        // Check if Brython is already available globally
+        if (typeof brython !== 'undefined') {
+            brythonLoaded = true;
+            brythonInitializing = false;
+            console.log('Brython already available');
+            return;
+        }
+        
+        // Load Brython from CDN
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/brython@3.12.0/brython.min.js';
+        script.async = true;
+        
+        script.onload = async () => {
+            try {
+                // Wait a bit for Brython to fully initialize
+                await new Promise(resolve => setTimeout(resolve, 100));
+                
+                // Check if brython function is available
+                if (typeof brython === 'function') {
+                    brythonLoaded = true;
+                    console.log('Brython loaded successfully');
+                } else {
+                    throw new Error('Brython function not available');
+                }
+            } catch (error) {
+                console.error('Failed to initialize Brython:', error);
+                brythonLoaded = false;
+            } finally {
+                brythonInitializing = false;
+            }
+        };
+        
+        script.onerror = () => {
+            console.error('Failed to load Brython script');
+            brythonLoaded = false;
+            brythonInitializing = false;
+        };
+        
+        document.head.appendChild(script);
+        
+    } catch (error) {
+        console.error('Failed to initialize Python:', error);
+        brythonLoaded = false;
+        brythonInitializing = false;
+    }
+}
+
+// Update the existing runPythonCode function to work with Brython
 async function runPythonCode() {
     const codeEditor = document.getElementById('pythonCode');
     const outputDisplay = document.getElementById('output');
@@ -649,119 +837,177 @@ async function runPythonCode() {
     // Update button state
     runButton.innerHTML = '<span>⏳ Running...</span>';
     runButton.disabled = true;
-    outputDisplay.textContent = 'Running your code...';
+    outputDisplay.textContent = 'Initializing Python interpreter...';
     outputDisplay.className = 'output-display';
     
     try {
-        // Using Judge0 API for Python execution
-        const response = await fetch('https://judge0-ce.p.rapidapi.com/submissions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-RapidAPI-Key': 'demo', // This is a demo key - for production use a real API key
-                'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
-            },
-            body: JSON.stringify({
-                language_id: 71, // Python 3
-                source_code: code,
-                stdin: ''
-            })
-        });
-        
-        if (!response.ok) {
-            throw new Error('Failed to submit code');
-        }
-        
-        const submission = await response.json();
-        const token = submission.token;
-        
-        // Poll for results
-        let result;
-        for (let i = 0; i < 10; i++) {
-            await new Promise(resolve => setTimeout(resolve, 1000));
+        // Initialize Brython if not already done
+        if (!brythonLoaded) {
+            await initializePython();
             
-            const resultResponse = await fetch(`https://judge0-ce.p.rapidapi.com/submissions/${token}`, {
-                headers: {
-                    'X-RapidAPI-Key': 'demo',
-                    'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
-                }
-            });
+            // Wait for initialization to complete
+            let attempts = 0;
+            while (!brythonLoaded && attempts < 50) {
+                await new Promise(resolve => setTimeout(resolve, 100));
+                attempts++;
+            }
             
-            if (resultResponse.ok) {
-                result = await resultResponse.json();
-                if (result.status.id > 2) { // Status > 2 means processing is complete
-                    break;
-                }
+            if (!brythonLoaded) {
+                throw new Error('Failed to initialize Python interpreter');
             }
         }
         
-        if (result) {
-            if (result.status.id === 3) { // Accepted
-                outputDisplay.textContent = result.stdout || 'Code executed successfully (no output)';
-                outputDisplay.className = 'output-display success';
-            } else if (result.status.id === 4) { // Wrong Answer
-                outputDisplay.textContent = `Error: ${result.stderr || 'Wrong answer'}`;
-                outputDisplay.className = 'output-display error';
-            } else if (result.status.id === 5) { // Time Limit Exceeded
-                outputDisplay.textContent = 'Error: Time limit exceeded';
+        outputDisplay.textContent = 'Running your code...';
+        
+        // Reset output
+        window.pythonOutput = '';
+        
+        try {
+            // Run the Python code using Brython's proper API
+            if (typeof brython === 'function') {
+                // Capture console errors
+                let consoleErrors = [];
+                const originalConsoleError = console.error;
+                console.error = function(...args) {
+                    consoleErrors.push(args.join(' '));
+                    originalConsoleError.apply(console, args);
+                };
+                
+                // Create a script element with Python code that captures output
+                const scriptElement = document.createElement('script');
+                scriptElement.type = 'text/python';
+                
+                // Properly indent user code for the try block
+                const indentedCode = code.split('\n').map(line => '    ' + line).join('\n');
+                
+                scriptElement.textContent = `
+from browser import window
+
+# Override print function to capture output
+original_print = print
+def custom_print(*args, **kwargs):
+    text = ' '.join(str(arg) for arg in args)
+    window.addToOutput(text)
+
+print = custom_print
+
+# Execute the user's code
+try:
+${indentedCode}
+except Exception as e:
+    window.addToOutput(f"Error: {str(e)}")
+`;
+                
+                // Append to body temporarily
+                document.body.appendChild(scriptElement);
+                
+                // Trigger Brython to process the script
+                try {
+                    brython();
+                } catch (brythonError) {
+                    // Capture any immediate errors from brython() call
+                    window.addToOutput(`Error: ${brythonError.message}`);
+                }
+                
+                // Wait a bit for Brython to execute
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+                // Restore console.error
+                console.error = originalConsoleError;
+                
+                // Remove the script element after execution
+                document.body.removeChild(scriptElement);
+                
+                // Check for console errors that might indicate syntax errors
+                const pythonErrors = consoleErrors.filter(error => 
+                    error.includes('SyntaxError') || 
+                    error.includes('IndentationError') || 
+                    error.includes('NameError') ||
+                    error.includes('TypeError') ||
+                    error.includes('Traceback')
+                );
+                
+                // Get the captured output
+                const output = window.pythonOutput;
+                
+                if (pythonErrors.length > 0) {
+                    // Extract error message from console
+                    let errorMsg = pythonErrors[0];
+                    if (errorMsg.includes('SyntaxError:')) {
+                        errorMsg = errorMsg.split('SyntaxError:')[1].trim();
+                    } else if (errorMsg.includes('IndentationError:')) {
+                        errorMsg = errorMsg.split('IndentationError:')[1].trim();
+                    }
+                    outputDisplay.textContent = `Syntax Error: ${errorMsg}`;
+                    outputDisplay.className = 'output-display error';
+                } else if (output) {
+                    // Remove only trailing newlines, preserve leading/internal whitespace
+                    const cleanOutput = output.replace(/\n+$/, '');
+                    outputDisplay.textContent = cleanOutput;
+                    // Check if it's an error message
+                    if (cleanOutput.trim().startsWith('Error:')) {
+                        outputDisplay.className = 'output-display error';
+                    } else {
+                        outputDisplay.className = 'output-display success';
+                    }
+                } else {
+                    outputDisplay.textContent = 'Code executed successfully (no output)';
+                    outputDisplay.className = 'output-display success';
+                }
+            } else {
+                throw new Error('Brython not properly initialized');
+            }
+        } catch (error) {
+            console.error('Error running Python code:', error);
+            
+            // Check if we have any output from Brython
+            const brythonOutput = window.pythonOutput;
+            if (brythonOutput && brythonOutput.trim()) {
+                // Remove only trailing newlines, preserve leading/internal whitespace
+                const cleanOutput = brythonOutput.replace(/\n+$/, '');
+                outputDisplay.textContent = cleanOutput;
                 outputDisplay.className = 'output-display error';
             } else {
-                outputDisplay.textContent = `Error: ${result.stderr || 'Unknown error occurred'}`;
+                // Format the error message
+                let errorMessage = error.message;
+                if (errorMessage.includes('Traceback')) {
+                    // Extract the actual error from Python traceback
+                    const lines = errorMessage.split('\n');
+                    const lastLine = lines[lines.length - 1];
+                    if (lastLine.includes(':')) {
+                        errorMessage = lastLine;
+                    }
+                }
+                
+                outputDisplay.textContent = `Error: ${errorMessage}`;
                 outputDisplay.className = 'output-display error';
             }
-        } else {
-            outputDisplay.textContent = 'Error: Could not get execution results';
-            outputDisplay.className = 'output-display error';
+        } finally {
+            // Clean up
+            delete window.pythonOutput;
         }
         
     } catch (error) {
         console.error('Error running Python code:', error);
         
-        // Fallback: Simple client-side Python-like execution for basic operations
-        try {
-            outputDisplay.textContent = simulatePythonExecution(code);
-            outputDisplay.className = 'output-display success';
-        } catch (simError) {
-            outputDisplay.textContent = `Error: ${error.message}\\n\\nNote: For full Python execution, you may need to use an external Python IDE.`;
-            outputDisplay.className = 'output-display error';
+        // Format the error message
+        let errorMessage = error.message;
+        if (errorMessage.includes('Traceback')) {
+            // Extract the actual error from Python traceback
+            const lines = errorMessage.split('\n');
+            const lastLine = lines[lines.length - 1];
+            if (lastLine.includes(':')) {
+                errorMessage = lastLine;
+            }
         }
+        
+        outputDisplay.textContent = `Error: ${errorMessage}`;
+        outputDisplay.className = 'output-display error';
     } finally {
         // Reset button state
         runButton.innerHTML = '<span>▶️ Run Code</span>';
         runButton.disabled = false;
     }
-}
-
-// Simple client-side Python simulation for basic print statements
-function simulatePythonExecution(code) {
-    const lines = code.split('\n');
-    let output = '';
-    
-    for (const line of lines) {
-        const trimmedLine = line.trim();
-        
-        // Handle print statements
-        if (trimmedLine.startsWith('print(') && trimmedLine.endsWith(')')) {
-            const content = trimmedLine.slice(6, -1); // Remove print( and )
-            
-            // Handle different print scenarios
-            if (content.includes('"') || content.includes("'")) {
-                // String literals
-                const matches = content.match(/"([^"]*)"|'([^']*)'/g);
-                if (matches) {
-                    output += matches.map(m => m.slice(1, -1)).join(' ') + '\n';
-                }
-            } else if (content.includes('\\n')) {
-                // Newline characters
-                output += content.replace(/\\n/g, '\n');
-            } else {
-                // Simple text
-                output += content + '\n';
-            }
-        }
-    }
-    
-    return output || 'Code executed (simulated)';
 }
 
 // Function to load examples for the current lesson
@@ -787,5 +1033,66 @@ function loadCurrentLessonExamples() {
     
     if (lessonNumber) {
         loadLessonExamples(lessonNumber);
+        
+        // Add line numbers to code examples after a short delay
+        setTimeout(() => {
+            addLineNumbersToCodeExamples();
+        }, 200);
     }
+}
+
+// Initialize the runner frame layout
+function initializeRunnerLayout() {
+    // No dynamic resizing needed - using fixed CSS layout
+}
+
+// Add line numbers to all code examples in the lesson content
+function addLineNumbersToCodeExamples() {
+    const codeBlocks = document.querySelectorAll('.code-block');
+    
+    codeBlocks.forEach(block => {
+        // Skip if already has line numbers or is empty
+        if (block.classList.contains('with-line-numbers') || !block.textContent.trim()) {
+            return;
+        }
+        
+        // Get the code content
+        const codeElement = block.querySelector('code');
+        let codeText = '';
+        
+        if (codeElement) {
+            codeText = codeElement.textContent;
+        } else {
+            codeText = block.textContent;
+        }
+        
+        // Skip if no content
+        if (!codeText.trim()) return;
+        
+        // Clean up the text and preserve formatting
+        const cleanText = codeText.trim();
+        const lines = cleanText.split('\n');
+        
+        // Create line numbers for the gutter
+        const lineNumbers = lines.map((_, index) => index + 1).join('\n');
+        
+        // Escape HTML characters but preserve whitespace and formatting
+        const escapedText = cleanText
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+        
+        // Add line numbers class
+        block.classList.add('with-line-numbers');
+        
+        // Create the new structure with separate gutter and content
+        block.innerHTML = `
+            <code>
+                <div class="line-numbers-gutter">${lineNumbers}</div>
+                <div class="code-content">${escapedText}</div>
+            </code>
+        `;
+    });
 } 

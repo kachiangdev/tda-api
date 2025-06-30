@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson 2: Variables and Data Types - Python Learning Course</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=1751263721">
+    <script src="https://cdn.jsdelivr.net/npm/brython@3.12.0/brython.min.js"></script>
 </head>
 <body>
     <div class="page-container">
@@ -102,21 +103,6 @@
                     <p>In Python, you create variables by assigning values to them using the <code>=</code> operator:</p>
                     
                     <div class="code-block">
-                        <div class="code-header">
-                            <span>Python</span>
-                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
-                        </div>
-                        <pre><code># Creating variables
-name = "Alice"
-age = 25
-height = 1.75
-is_student = True
-
-# Printing variables
-print("Name:", name)
-print("Age:", age)
-print("Height:", height, "meters")
-print("Is student:", is_student)</code></pre>
                     </div>
                 </div>
 
@@ -129,40 +115,32 @@ print("Is student:", is_student)</code></pre>
                             <h3>🔢 Integers (int)</h3>
                             <p>Whole numbers (positive, negative, or zero)</p>
                             <div class="code-block">
-                                <pre><code>x = 10
-y = -5
-z = 0</code></pre>
-                            </div>
+                        
+                    </div>
                         </div>
                         
                         <div class="data-type-item">
                             <h3>📏 Floats (float)</h3>
                             <p>Decimal numbers</p>
                             <div class="code-block">
-                                <pre><code>pi = 3.14
-temperature = 98.6
-height = 1.75</code></pre>
-                            </div>
+                        
+                    </div>
                         </div>
                         
                         <div class="data-type-item">
                             <h3>🔤 Strings (str)</h3>
                             <p>Text enclosed in quotes</p>
                             <div class="code-block">
-                                <pre><code>name = "John"
-message = 'Hello, World!'
-text = """Multi-line
-string"""</code></pre>
-                            </div>
+                        
+                    </div>
                         </div>
                         
                         <div class="data-type-item">
                             <h3>✅ Booleans (bool)</h3>
                             <p>True or False values</p>
                             <div class="code-block">
-                                <pre><code>is_active = True
-is_finished = False</code></pre>
-                            </div>
+                        
+                    </div>
                         </div>
                     </div>
                 </div>
@@ -172,29 +150,13 @@ is_finished = False</code></pre>
                     <p>You can check the type of a variable using the <code>type()</code> function:</p>
                     
                     <div class="code-block">
-                        <div class="code-header">
-                            <span>Python</span>
-                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
-                        </div>
-                        <pre><code># Different data types
-x = 10
-y = 3.14
-text = "Hello"
-flag = False
-
-# Checking types
-print("Type of x:", type(x))
-print("Type of y:", type(y))
-print("Type of text:", type(text))
-print("Type of flag:", type(flag))</code></pre>
                     </div>
                     
                     <div class="output-example">
                         <h4>Output:</h4>
-                        <pre><code>&lt;class 'int'&gt;
-&lt;class 'float'&gt;
-&lt;class 'str'&gt;
-&lt;class 'bool'&gt;</code></pre>
+                        <div class="code-block">
+                        
+                    </div>
                     </div>
                 </div>
 
@@ -203,22 +165,32 @@ print("Type of flag:", type(flag))</code></pre>
                     <p>You can convert between different data types using built-in functions:</p>
                     
                     <div class="code-block">
-                        <div class="code-header">
-                            <span>Python</span>
-                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                    </div>
+                </div>
+
+                <div class="lesson-section">
+                    <h2>💡 Key Concepts</h2>
+                    <div class="concept-grid">
+                        <div class="concept-item">
+                            <h3>📦 Variable Assignment</h3>
+                            <p>Variables store data using the <code>=</code> operator:</p>
+                            <div class="code-block">
+                            </div>
                         </div>
-                        <pre><code># Converting between types
-number_string = "42"
-number = int(number_string)  # Convert string to integer
-print("Number:", number, type(number))
-
-float_number = 3.14
-int_number = int(float_number)  # Convert float to integer
-print("Integer:", int_number)
-
-number = 123
-string_number = str(number)  # Convert integer to string
-print("String:", string_number, type(string_number))</code></pre>
+                        
+                        <div class="concept-item">
+                            <h3>🔍 Type Checking</h3>
+                            <p>Use <code>type()</code> to check what type of data a variable holds:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                        
+                        <div class="concept-item">
+                            <h3>🔄 Type Conversion</h3>
+                            <p>Convert between data types using built-in functions:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -251,45 +223,42 @@ print("String:", string_number, type(string_number))</code></pre>
                             <strong>Hint:</strong> Use float for the temperature values since they can be decimal numbers.
                         </div>
                     </div>
-                </div>
+                
+            </div>
 
-                <!-- Bottom Navigation -->
-                <div class="bottom-nav">
-                    <a href="lesson1.html" class="nav-button prev">Previous: Introduction to Python</a>
-                    <a href="lesson3.html" class="nav-button next">Next: Operators</a>
+            <!-- Python Runner Frame -->
+            <div class="python-runner-frame">
+                <div class="runner-header">
+                    <h3>🐍 Python Editor</h3>
+                    <button class="runner-toggle" onclick="togglePythonRunner()">◀</button>
+                </div>
+                <div class="runner-content">
+                    <div class="runner-editor">
+                        <div class="code-editor-container">
+                            <div class="line-numbers" id="lineNumbers">1</div>
+                            <textarea id="pythonCode" class="code-editor" spellcheck="false" placeholder="Enter your Python code here..."></textarea>
+                        </div>
+                    </div>
+                    <div class="runner-controls">
+                        <button class="run-button" onclick="runPythonCode()">
+                            <span>▶️ Run Code</span>
+                        </button>
+                        <button class="clear-button" onclick="clearPythonCode()">
+                            🗑️ Clear
+                        </button>
+                    </div>
+                    <div class="runner-output">
+                        <div class="output-header">
+                            <h4>Output:</h4>
+                        </div>
+                        <div id="output" class="output-display">
+                            <em>Click "Run Code" to see the output here</em>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
-
-        <!-- Python Runner Frame -->
-        <div class="python-runner-frame">
-            <div class="runner-header">
-                <h3>🐍 Python Editor</h3>
-                <button class="runner-toggle" onclick="togglePythonRunner()">◀</button>
-            </div>
-            <div class="runner-content">
-                <div class="runner-editor">
-                    <textarea id="pythonCode" class="code-editor" placeholder="Enter your Python code here..."></textarea>
-                </div>
-                <div class="runner-controls">
-                    <button class="run-button" onclick="runPythonCode()">
-                        <span>▶️ Run Code</span>
-                    </button>
-                    <button class="clear-button" onclick="clearPythonCode()">
-                        🗑️ Clear
-                    </button>
-                </div>
-                <div class="runner-output">
-                    <div class="output-header">
-                        <h4>Output:</h4>
-                    </div>
-                    <div id="output" class="output-display">
-                        <em>Click "Run Code" to see the output here</em>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js?v=1751263721"></script>
 </body>
-</html> 
+</html>

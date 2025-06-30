@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson 13: Text Adventure Game - Python Learning Course</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=1751263721">
+    <script src="https://cdn.jsdelivr.net/npm/brython@3.12.0/brython.min.js"></script>
 </head>
 <body>
     <div class="page-container">
@@ -102,12 +103,6 @@
                     </ul>
                 </div>
 
-                <div class="lesson-section">
-                    <h2>Complete Text Adventure Game</h2>
-                    <div class="code-block">
-                        <em>Loading example code...</em>
-                    </div>
-                </div>
 
                 <div class="lesson-section">
                     <h2>How It Works</h2>
@@ -121,21 +116,62 @@
                     </ol>
                 </div>
 
-                <div class="challenge-box">
-                    <h3>🚀 Challenge</h3>
-                    <p>Add multiple endings. Create more story branches.</p>
+                <div class="lesson-section">
+                    <h2>💡 Key Concepts</h2>
+                    <div class="concept-grid">
+                        <div class="concept-item">
+                            <h3>🎭 Story Branching</h3>
+                            <p>Use conditional logic to create story paths:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                        
+                        <div class="concept-item">
+                            <h3>🎮 User Interaction</h3>
+                            <p>Get player choices and respond:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                        
+                        <div class="concept-item">
+                            <h3>📝 Game Organization</h3>
+                            <p>Structure your game with functions:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="practice-box">
-                    <h3>🎯 Practice</h3>
-                    <p>Try running this code and play the adventure! Then modify it to add your own story elements.</p>
+                <div class="lesson-section">
+                    <h2>🎯 Practice Exercises</h2>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 1: Simple Room Navigation</h3>
+                        <p>Create a basic text adventure with 3 rooms that the player can navigate between.</p>
+                        <div class="hint">
+                            <strong>Hint:</strong> Use a dictionary to map room names to descriptions and available exits.
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 2: Player Inventory</h3>
+                        <p>Add an inventory system where players can pick up and drop items.</p>
+                        <div class="hint">
+                            <strong>Hint:</strong> Use a list to store inventory items and functions to add/remove items.
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Bottom Navigation -->
-                <div class="bottom-nav">
-                    <a href="lesson12.html" class="nav-button prev">Previous: Simple Error Handling</a>
-                    <a href="lesson14.html" class="nav-button next">Next: Mini Quiz Game</a>
-                </div>
+                <div class="lesson-section">
+                    <h2>🏆 Challenge</h2>
+                    <div class="challenge">
+                        <h3>Challenge: Enhanced Adventure</h3>
+                        <p>Create an adventure game with multiple rooms, items to collect, multiple endings, and more story branches.</p>
+                        <div class="hint">
+                            <strong>Hint:</strong> Use dictionaries for rooms and items, lists for inventory, and functions for different story paths.
+                        </div>
+                    </div>
+                
             </div>
 
             <!-- Python Runner Frame -->
@@ -146,7 +182,10 @@
                 </div>
                 <div class="runner-content">
                     <div class="runner-editor">
-                        <textarea id="pythonCode" class="code-editor" placeholder="Enter your Python code here..."></textarea>
+                        <div class="code-editor-container">
+                            <div class="line-numbers" id="lineNumbers">1</div>
+                            <textarea id="pythonCode" class="code-editor" spellcheck="false" placeholder="Enter your Python code here..."></textarea>
+                        </div>
                     </div>
                     <div class="runner-controls">
                         <button class="run-button" onclick="runPythonCode()">
@@ -168,6 +207,6 @@
             </div>
         </main>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js?v=1751263721"></script>
 </body>
-</html> 
+</html>

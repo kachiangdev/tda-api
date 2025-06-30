@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson 14: Mini Quiz Game - Python Learning Course</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=1751263721">
+    <script src="https://cdn.jsdelivr.net/npm/brython@3.12.0/brython.min.js"></script>
 </head>
 <body>
     <div class="page-container">
@@ -102,12 +103,12 @@
                     </ul>
                 </div>
 
-                <div class="lesson-section">
+                <!-- <div class="lesson-section">
                     <h2>Complete Quiz Game Code</h2>
                     <div class="code-block">
                         <em>Loading example code...</em>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="lesson-section">
                     <h2>How It Works</h2>
@@ -119,6 +120,32 @@
                         <li>At the end, we calculate and display the percentage</li>
                         <li>We give different feedback based on performance</li>
                     </ol>
+                </div>
+
+                <div class="lesson-section">
+                    <h2>💡 Key Concepts</h2>
+                    <div class="concept-grid">
+                        <div class="concept-item">
+                            <h3>🧮 Score Tracking</h3>
+                            <p>Keep track of correct answers:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                        
+                        <div class="concept-item">
+                            <h3>❓ Question Functions</h3>
+                            <p>Organize questions in reusable functions:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                        
+                        <div class="concept-item">
+                            <h3>📊 Final Results</h3>
+                            <p>Calculate and display quiz results:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="challenge-box">
@@ -135,13 +162,7 @@
                     <h2>Congratulations! 🎉</h2>
                     <p>You've completed the Python Learning Course! You now have a solid foundation in Python programming.</p>
                     <p>Keep practicing and building projects to strengthen your skills. The best way to learn programming is by doing!</p>
-                </div>
-
-                <!-- Bottom Navigation -->
-                <div class="bottom-nav">
-                    <a href="lesson13.html" class="nav-button prev">Previous: Text Adventure Game</a>
-                    <a href="index.html" class="nav-button next">Back to Course Overview</a>
-                </div>
+                
             </div>
 
             <!-- Python Runner Frame -->
@@ -152,7 +173,10 @@
                 </div>
                 <div class="runner-content">
                     <div class="runner-editor">
-                        <textarea id="pythonCode" class="code-editor" placeholder="Enter your Python code here..."></textarea>
+                        <div class="code-editor-container">
+                            <div class="line-numbers" id="lineNumbers">1</div>
+                            <textarea id="pythonCode" class="code-editor" spellcheck="false" placeholder="Enter your Python code here..."></textarea>
+                        </div>
                     </div>
                     <div class="runner-controls">
                         <button class="run-button" onclick="runPythonCode()">
@@ -174,6 +198,6 @@
             </div>
         </main>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js?v=1751263721"></script>
 </body>
-</html> 
+</html>

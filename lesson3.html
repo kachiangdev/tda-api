@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson 3: Basic Arithmetic - Python Learning Course</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=1751263721">
+    <script src="https://cdn.jsdelivr.net/npm/brython@3.12.0/brython.min.js"></script>
 </head>
 <body>
     <div class="page-container">
@@ -87,21 +88,6 @@
                     <p>Arithmetic operators are used to perform mathematical operations on numbers.</p>
                     
                     <div class="code-block">
-                        <div class="code-header">
-                            <span>Python</span>
-                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
-                        </div>
-                        <pre><code># Basic arithmetic
-a = 10
-b = 3
-
-print("Addition:", a + b)
-print("Subtraction:", a - b)
-print("Multiplication:", a * b)
-print("Division:", a / b)
-print("Floor division:", a // b)
-print("Modulus:", a % b)
-print("Exponentiation:", a ** b)</code></pre>
                     </div>
                 </div>
 
@@ -110,20 +96,32 @@ print("Exponentiation:", a ** b)</code></pre>
                     <p>Strings can be combined and repeated using operators.</p>
                     
                     <div class="code-block">
-                        <div class="code-header">
-                            <span>Python</span>
-                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
-                        </div>
-                        <pre><code># String operations
-first_name = "John"
-last_name = "Doe"
-full_name = first_name + " " + last_name
-print("Full name:", full_name)
+                    </div>
+                </div>
 
-# String repetition
-separator = "-" * 20
-print(separator)
-print("Repeated text:", "Python! " * 3)</code></pre>
+                <div class="lesson-section">
+                    <h2>💡 Key Concepts</h2>
+                    <div class="concept-grid">
+                        <div class="concept-item">
+                            <h3>➕ Addition & Subtraction</h3>
+                            <p>Basic arithmetic operations for adding and subtracting numbers:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                        
+                        <div class="concept-item">
+                            <h3>✖️ Multiplication & Division</h3>
+                            <p>Multiply, divide, and find remainders with modulus:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                        
+                        <div class="concept-item">
+                            <h3>🔤 String Operations</h3>
+                            <p>Combine and repeat strings using + and * operators:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -133,11 +131,17 @@ print("Repeated text:", "Python! " * 3)</code></pre>
                     <div class="exercise">
                         <h3>Exercise 1: Calculator</h3>
                         <p>Create variables for two numbers and perform all arithmetic operations on them.</p>
+                        <div class="hint">
+                            <strong>Hint:</strong> Use operators like +, -, *, /, //, %, and ** on your variables.
+                        </div>
                     </div>
                     
                     <div class="exercise">
                         <h3>Exercise 2: String Manipulation</h3>
                         <p>Create a program that combines your first and last name, then repeats your first name 3 times.</p>
+                        <div class="hint">
+                            <strong>Hint:</strong> Use the + operator to combine strings and * operator to repeat them.
+                        </div>
                     </div>
                 </div>
 
@@ -146,46 +150,46 @@ print("Repeated text:", "Python! " * 3)</code></pre>
                     <div class="challenge">
                         <h3>Challenge: Area Calculator</h3>
                         <p>Calculate the area of a rectangle using length and width variables. Then calculate the area of a circle using the radius.</p>
+                        <div class="hint">
+                            <strong>Hint:</strong> Rectangle area = length × width. Circle area = π × radius². Use 3.14159 for π.
+                        </div>
                     </div>
-                </div>
+                
+            </div>
 
-                <!-- Bottom Navigation -->
-                <div class="bottom-nav">
-                    <a href="lesson2.html" class="nav-button prev">Previous: Variables and Data Types</a>
-                    <a href="lesson4.html" class="nav-button next">Next: Comparison and Logical Operators</a>
+            <!-- Python Runner Frame -->
+            <div class="python-runner-frame">
+                <div class="runner-header">
+                    <h3>🐍 Python Editor</h3>
+                    <button class="runner-toggle" onclick="togglePythonRunner()">◀</button>
+                </div>
+                <div class="runner-content">
+                    <div class="runner-editor">
+                        <div class="code-editor-container">
+                            <div class="line-numbers" id="lineNumbers">1</div>
+                            <textarea id="pythonCode" class="code-editor" spellcheck="false" placeholder="Enter your Python code here..."></textarea>
+                        </div>
+                    </div>
+                    <div class="runner-controls">
+                        <button class="run-button" onclick="runPythonCode()">
+                            <span>▶️ Run Code</span>
+                        </button>
+                        <button class="clear-button" onclick="clearPythonCode()">
+                            🗑️ Clear
+                        </button>
+                    </div>
+                    <div class="runner-output">
+                        <div class="output-header">
+                            <h4>Output:</h4>
+                        </div>
+                        <div id="output" class="output-display">
+                            <em>Click "Run Code" to see the output here</em>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
-
-        <!-- Python Runner Frame -->
-        <div class="python-runner-frame">
-            <div class="runner-header">
-                <h3>🐍 Python Editor</h3>
-                <button class="runner-toggle" onclick="togglePythonRunner()">◀</button>
-            </div>
-            <div class="runner-content">
-                <div class="runner-editor">
-                    <textarea id="pythonCode" class="code-editor" placeholder="Enter your Python code here..."></textarea>
-                </div>
-                <div class="runner-controls">
-                    <button class="run-button" onclick="runPythonCode()">
-                        <span>▶️ Run Code</span>
-                    </button>
-                    <button class="clear-button" onclick="clearPythonCode()">
-                        🗑️ Clear
-                    </button>
-                </div>
-                <div class="runner-output">
-                    <div class="output-header">
-                        <h4>Output:</h4>
-                    </div>
-                    <div id="output" class="output-display">
-                        <em>Click "Run Code" to see the output here</em>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js?v=1751263721"></script>
 </body>
-</html> 
+</html>

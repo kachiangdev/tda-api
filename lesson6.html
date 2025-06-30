@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson 6: Conditions and If-Else - Python Learning Course</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=1751263721">
+    <script src="https://cdn.jsdelivr.net/npm/brython@3.12.0/brython.min.js"></script>
 </head>
 <body>
     <div class="page-container">
@@ -92,31 +93,19 @@
                     
                     <h3>Example 1: Simple If Statement</h3>
                     <div class="code-block">
-                        <pre><code>age = 20
-if age >= 18:
-    print("Adult")</code></pre>
+                        
                     </div>
                     <p>This will output: <code>Adult</code></p>
 
                     <h3>Example 2: If-Else Statement</h3>
                     <div class="code-block">
-                        <pre><code>num = -3
-if num > 0:
-    print("Positive")
-else:
-    print("Zero or Negative")</code></pre>
+                        
                     </div>
                     <p>This will output: <code>Zero or Negative</code></p>
 
                     <h3>Example 3: If-Elif-Else Statement</h3>
                     <div class="code-block">
-                        <pre><code>score = 85
-if score >= 90:
-    print("A")
-elif score >= 80:
-    print("B")
-else:
-    print("C or lower")</code></pre>
+                        
                     </div>
                     <p>This will output: <code>B</code></p>
                 </div>
@@ -133,53 +122,97 @@ else:
                     </ul>
                 </div>
 
-                <div class="practice-box">
-                    <h3>🎯 Practice</h3>
-                    <p>Ask for a number. Print if it's "Even" or "Odd".</p>
+                <div class="lesson-section">
+                    <h2>💡 Key Concepts</h2>
+                    <div class="concept-grid">
+                        <div class="concept-item">
+                            <h3>🤔 If Statement</h3>
+                            <p>Execute code only when a condition is true:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                        
+                        <div class="concept-item">
+                            <h3>🔀 If-Else Statement</h3>
+                            <p>Choose between two different actions:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                        
+                        <div class="concept-item">
+                            <h3>🎯 If-Elif-Else Chain</h3>
+                            <p>Handle multiple conditions in sequence:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="challenge-box">
-                    <h3>🚀 Extra Challenge</h3>
-                    <p>Check if a number is even or odd.</p>
+                <div class="lesson-section">
+                    <h2>🎯 Practice Exercises</h2>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 1: Even or Odd</h3>
+                        <p>Ask for a number and print whether it's "Even" or "Odd".</p>
+                        <div class="hint">
+                            <strong>Hint:</strong> Use the modulus operator % to check if number % 2 == 0.
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 2: Grade Calculator</h3>
+                        <p>Ask for a test score and print the letter grade (A, B, C, D, or F).</p>
+                        <div class="hint">
+                            <strong>Hint:</strong> Use if-elif-else chain: A(90+), B(80+), C(70+), D(60+), F(below 60).
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Bottom Navigation -->
-                <div class="bottom-nav">
-                    <a href="lesson5.html" class="nav-button prev">Previous: Input from User</a>
-                    <a href="lesson7.html" class="nav-button next">Next: Number Guessing Game</a>
+                <div class="lesson-section">
+                    <h2>🏆 Challenge</h2>
+                    <div class="challenge">
+                        <h3>Challenge: Age Category</h3>
+                        <p>Ask for someone's age and categorize them as Child (0-12), Teen (13-19), Adult (20-64), or Senior (65+).</p>
+                        <div class="hint">
+                            <strong>Hint:</strong> Use multiple if-elif statements to check age ranges.
+                        </div>
+                    </div>
+                
+            </div>
+
+            <!-- Python Runner Frame -->
+            <div class="python-runner-frame">
+                <div class="runner-header">
+                    <h3>🐍 Python Editor</h3>
+                    <button class="runner-toggle" onclick="togglePythonRunner()">◀</button>
+                </div>
+                <div class="runner-content">
+                    <div class="runner-editor">
+                        <div class="code-editor-container">
+                            <div class="line-numbers" id="lineNumbers">1</div>
+                            <textarea id="pythonCode" class="code-editor" spellcheck="false" placeholder="Enter your Python code here..."></textarea>
+                        </div>
+                    </div>
+                    <div class="runner-controls">
+                        <button class="run-button" onclick="runPythonCode()">
+                            <span>▶️ Run Code</span>
+                        </button>
+                        <button class="clear-button" onclick="clearPythonCode()">
+                            🗑️ Clear
+                        </button>
+                    </div>
+                    <div class="runner-output">
+                        <div class="output-header">
+                            <h4>Output:</h4>
+                        </div>
+                        <div id="output" class="output-display">
+                            <em>Click "Run Code" to see the output here</em>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
-
-        <!-- Python Runner Frame -->
-        <div class="python-runner-frame">
-            <div class="runner-header">
-                <h3>🐍 Python Editor</h3>
-                <button class="runner-toggle" onclick="togglePythonRunner()">◀</button>
-            </div>
-            <div class="runner-content">
-                <div class="runner-editor">
-                    <textarea id="pythonCode" class="code-editor" placeholder="Enter your Python code here..."></textarea>
-                </div>
-                <div class="runner-controls">
-                    <button class="run-button" onclick="runPythonCode()">
-                        <span>▶️ Run Code</span>
-                    </button>
-                    <button class="clear-button" onclick="clearPythonCode()">
-                        🗑️ Clear
-                    </button>
-                </div>
-                <div class="runner-output">
-                    <div class="output-header">
-                        <h4>Output:</h4>
-                    </div>
-                    <div id="output" class="output-display">
-                        <em>Click "Run Code" to see the output here</em>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js?v=1751263721"></script>
 </body>
-</html> 
+</html>

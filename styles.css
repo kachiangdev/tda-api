@@ -9,7 +9,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: white;
     min-height: 100vh;
 }
 
@@ -38,13 +38,13 @@ body {
 }
 
 .sidebar-header h2 {
-    color: #667eea;
+    color: #666;
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
 }
 
 .sidebar-header a {
-    color: #764ba2;
+    color: #999;
     text-decoration: none;
     font-size: 0.9rem;
 }
@@ -66,19 +66,19 @@ body {
 }
 
 .lesson-link:hover {
-    background: #667eea;
+    background: #666;
     color: white;
     transform: translateX(5px);
 }
 
 .lesson-link.active {
-    background: #667eea;
+    background: #666;
     color: white;
     font-weight: 600;
 }
 
 .lesson-number {
-    background: #667eea;
+    background: #666;
     color: white;
     width: 24px;
     height: 24px;
@@ -95,22 +95,20 @@ body {
 .lesson-link:hover .lesson-number,
 .lesson-link.active .lesson-number {
     background: white;
-    color: #667eea;
+    color: #666;
 }
 
 /* Main content styles */
 .main-content {
     flex: 1;
-    margin-left: 280px;
-    background: white;
-    min-height: 100vh;
-    position: relative;
+    padding: 2rem;
+    margin-left: 280px; /* Account for sidebar */
+    margin-right: calc(50vw - 140px); /* 50% of viewport minus half of sidebar width */
 }
 
 .content {
     padding: 2rem;
-    padding-bottom: 6rem;
-    max-width: 900px;
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -118,9 +116,10 @@ body {
 header {
     text-align: center;
     padding: 3rem 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: white;
+    color: #333;
     margin-bottom: 2rem;
+    border-bottom: 2px solid #e0e0e0;
 }
 
 header h1 {
@@ -138,11 +137,11 @@ header p {
 .lesson-header {
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    border-bottom: 2px solid #667eea;
+    border-bottom: 2px solid #666;
 }
 
 .lesson-header h1 {
-    color: #667eea;
+    color: #666;
     font-size: 2.2rem;
     margin-bottom: 0.5rem;
 }
@@ -158,11 +157,11 @@ header p {
     padding: 1.5rem;
     background: #f8f9fa;
     border-radius: 10px;
-    border-left: 4px solid #667eea;
+    border-left: 4px solid #666;
 }
 
 .lesson-section h2 {
-    color: #667eea;
+    color: #666;
     margin-bottom: 1rem;
     font-size: 1.4rem;
 }
@@ -184,6 +183,8 @@ header p {
     font-size: 0.9rem;
     line-height: 1.5;
     position: relative;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
 .code-block::before {
@@ -191,7 +192,7 @@ header p {
     position: absolute;
     top: 0.5rem;
     right: 1rem;
-    background: #667eea;
+    background: #666;
     color: white;
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
@@ -201,52 +202,67 @@ header p {
 
 /* Line numbers styles */
 .code-block.with-line-numbers {
-    padding-left: 3.5rem;
-    counter-reset: line;
+    display: flex;
+    padding: 0;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.code-block.with-line-numbers::before {
+    content: 'python';
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    background: #666;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    z-index: 2;
 }
 
 .code-block.with-line-numbers code {
-    display: block;
-    position: relative;
-    padding-left: 1rem;
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.code-block.with-line-numbers .line-numbers-gutter {
+    background: #1a202c;
+    color: #718096;
+    padding: 1.5rem 0.5rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: right;
+    border-right: 1px solid #4a5568;
+    user-select: none;
+    min-width: 2.5rem;
+    white-space: pre-line;
+    flex-shrink: 0;
+}
+
+.code-block.with-line-numbers .code-content {
+    flex: 1;
+    padding: 1.5rem;
+    background: #2d3748;
+    color: #e2e8f0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    word-wrap: break-word;
 }
 
 .code-block.with-line-numbers .code-line {
     display: block;
-    position: relative;
-    padding-left: 2.5rem;
     min-height: 1.5em;
-}
-
-.code-block.with-line-numbers .code-line::before {
-    counter-increment: line;
-    content: counter(line);
-    position: absolute;
-    left: 0;
-    color: #718096;
-    text-align: right;
-    width: 2rem;
-    font-size: 0.8rem;
-    user-select: none;
-    background: #2d3748;
-    padding-right: 0.5rem;
-}
-
-.code-block.with-line-numbers .code-line:empty::before {
-    content: "";
-}
-
-/* Line number gutter */
-.code-block.with-line-numbers::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 3rem;
-    background: #1a202c;
-    border-right: 1px solid #4a5568;
-    border-radius: 8px 0 0 8px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
 .practice-box {
@@ -275,14 +291,55 @@ header p {
     margin-bottom: 0.5rem;
 }
 
+/* Key Concepts Grid */
+.concept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.concept-item {
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.concept-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.concept-item h3 {
+    color: #666;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.concept-item p {
+    margin-bottom: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.concept-item .code-block {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
 /* Python Shell Styles */
 .python-shell-container {
     background: white;
-    border: 2px solid #667eea;
+    border: 2px solid #666;
     border-radius: 10px;
     overflow: hidden;
     margin: 1.5rem 0;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+    box-shadow: 0 4px 12px rgba(102, 102, 102, 0.15);
 }
 
 .editor-header {
@@ -295,7 +352,7 @@ header p {
 }
 
 .editor-header h3 {
-    color: #667eea;
+    color: #666;
     font-size: 1.2rem;
     margin: 0;
 }
@@ -326,23 +383,24 @@ header p {
 }
 
 .code-editor {
-    width: 100%;
-    height: 200px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
+    flex: 1;
+    border: none;
+    border-radius: 0;
     padding: 1rem;
     font-family: 'Courier New', monospace;
     font-size: 14px;
     line-height: 1.5;
     background: #2d3748;
     color: #e2e8f0;
-    resize: vertical;
+    resize: none;
     outline: none;
+    min-height: 200px;
+    spellcheck: false;
 }
 
 .code-editor:focus {
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: #666;
+    box-shadow: 0 0 0 3px rgba(102, 102, 102, 0.1);
 }
 
 .output-container {
@@ -352,23 +410,31 @@ header p {
 }
 
 .output-container h4 {
-    color: #667eea;
+    color: #666;
     margin: 0 0 0.5rem 0;
     font-size: 1rem;
 }
 
 .output-display {
+    flex: 1;
     background: white;
     border: 1px solid #e0e0e0;
     border-radius: 6px;
     padding: 1rem;
-    min-height: 60px;
     font-family: 'Courier New', monospace;
     font-size: 14px;
     line-height: 1.5;
     color: #333;
     white-space: pre-wrap;
     word-wrap: break-word;
+    overflow-y: auto;
+    min-height: 100px;
+    text-align: left;
+}
+
+.output-display em {
+    text-align: left;
+    display: block;
 }
 
 .output-display.error {
@@ -389,7 +455,7 @@ header p {
 }
 
 .shell-header h3 {
-    color: #667eea;
+    color: #666;
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
 }
@@ -419,24 +485,24 @@ header p {
 }
 
 .shell-button.primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #666;
     color: white;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 12px rgba(102, 102, 102, 0.3);
 }
 
 .shell-button.primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 6px 20px rgba(102, 102, 102, 0.4);
 }
 
 .shell-button.secondary {
     background: #f8f9fa;
-    color: #667eea;
-    border-color: #667eea;
+    color: #666;
+    border-color: #666;
 }
 
 .shell-button.secondary:hover {
-    background: #667eea;
+    background: #666;
     color: white;
     transform: translateY(-2px);
 }
@@ -465,7 +531,7 @@ header p {
 }
 
 .shell-instructions h4 {
-    color: #667eea;
+    color: #666;
     margin-bottom: 1rem;
     font-size: 1.1rem;
 }
@@ -479,59 +545,6 @@ header p {
     color: #555;
 }
 
-/* Bottom navigation */
-.bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 280px;
-    right: 0;
-    background: white;
-    border-top: 1px solid #e0e0e0;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 100;
-}
-
-.nav-button {
-    display: flex;
-    align-items: center;
-    padding: 0.75rem 1.5rem;
-    background: #667eea;
-    color: white;
-    text-decoration: none;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-    font-weight: 500;
-}
-
-.nav-button:hover {
-    background: #5a67d8;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-}
-
-.nav-button.prev::before {
-    content: '←';
-    margin-right: 0.5rem;
-    font-weight: bold;
-}
-
-.nav-button.next::after {
-    content: '→';
-    margin-left: 0.5rem;
-    font-weight: bold;
-}
-
-.nav-button.disabled {
-    background: #ccc;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
-}
-
 /* Index page specific styles */
 .welcome-section {
     text-align: center;
@@ -539,7 +552,7 @@ header p {
 }
 
 .welcome-section h2 {
-    color: #667eea;
+    color: #666;
     font-size: 2rem;
     margin-bottom: 1rem;
 }
@@ -572,12 +585,12 @@ header p {
 }
 
 .info-card h3 {
-    color: #667eea;
+    color: #666;
     margin-bottom: 0.5rem;
 }
 
 .lessons-grid h2 {
-    color: #667eea;
+    color: #666;
     text-align: center;
     margin-bottom: 2rem;
     font-size: 1.8rem;
@@ -608,7 +621,7 @@ header p {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #667eea, #764ba2);
+    background: #e0e0e0;
 }
 
 .lesson-card:hover {
@@ -626,7 +639,7 @@ header p {
 }
 
 .lesson-card h3 {
-    color: #667eea;
+    color: #666;
     margin: 0 0 0.5rem 0;
     font-size: 1.2rem;
 }
@@ -657,13 +670,8 @@ header p {
         margin-left: 0;
     }
     
-    .bottom-nav {
-        left: 0;
-    }
-    
     .content {
         padding: 1rem;
-        padding-bottom: 6rem;
     }
     
     .lesson-cards {
@@ -698,7 +706,7 @@ header p {
     top: 1rem;
     left: 1rem;
     z-index: 1001;
-    background: #667eea;
+    background: #666;
     color: white;
     border: none;
     padding: 0.5rem;
@@ -733,23 +741,14 @@ header p {
     min-height: 100vh;
 }
 
-.main-content {
-    flex: 1;
-    padding: 2rem;
-    margin-left: 250px; /* Account for sidebar */
-    margin-bottom: 80px; /* Account for bottom navigation */
-    max-width: calc(100vw - 250px - 400px); /* Leave space for right panel */
-    transition: margin-left 0.3s ease;
-}
-
 .python-runner-frame {
     position: fixed;
     right: 0;
     top: 0;
-    width: 400px;
+    width: calc(50vw - 140px); /* 50% of viewport minus half of sidebar width */
     height: 100vh;
     background: white;
-    border-left: 2px solid #667eea;
+    border-left: 2px solid #666;
     box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     display: flex;
@@ -757,8 +756,8 @@ header p {
 }
 
 .runner-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: white;
+    color: #333;
     padding: 1rem 1.5rem;
     display: flex;
     justify-content: space-between;
@@ -773,9 +772,9 @@ header p {
 }
 
 .runner-toggle {
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    color: white;
+    background: #f0f0f0;
+    border: 1px solid #e0e0e0;
+    color: #333;
     padding: 0.5rem;
     border-radius: 6px;
     cursor: pointer;
@@ -784,7 +783,7 @@ header p {
 }
 
 .runner-toggle:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: #e0e0e0;
 }
 
 .runner-content {
@@ -792,19 +791,50 @@ header p {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    min-height: 0; /* Allow flexbox to shrink */
 }
 
 .runner-editor {
-    flex: 1;
-    padding: 1rem;
     display: flex;
     flex-direction: column;
+    flex: 1;
+    position: relative;
+    min-height: 0; /* Allow flexbox to shrink */
+    overflow: hidden;
+}
+
+.code-editor-container {
+    display: flex;
+    flex: 1;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #2d3748;
+    position: relative;
+    height: 100%;
+}
+
+.line-numbers {
+    background: #1a202c;
+    color: #718096;
+    padding: 1rem 0.75rem 1rem 0.5rem;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: right;
+    border-right: 1px solid #4a5568;
+    user-select: none;
+    min-width: 45px;
+    white-space: pre;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    flex-shrink: 0;
 }
 
 .code-editor {
     flex: 1;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
+    border: none;
+    border-radius: 0;
     padding: 1rem;
     font-family: 'Courier New', monospace;
     font-size: 14px;
@@ -814,11 +844,16 @@ header p {
     resize: none;
     outline: none;
     min-height: 200px;
+    spellcheck: false;
+    overflow-y: auto;
+    overflow-x: auto;
+    white-space: pre;
+    word-wrap: normal;
 }
 
 .code-editor:focus {
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border: none;
+    box-shadow: none;
 }
 
 .runner-controls {
@@ -885,7 +920,7 @@ header p {
 }
 
 .output-header h4 {
-    color: #667eea;
+    color: #666;
     margin: 0;
     font-size: 1rem;
 }
@@ -904,6 +939,9 @@ header p {
     word-wrap: break-word;
     overflow-y: auto;
     min-height: 100px;
+    tab-size: 4;
+    -moz-tab-size: 4;
+    text-align: left;
 }
 
 .output-display.error {
@@ -921,11 +959,12 @@ header p {
 /* Mobile Responsive */
 @media (max-width: 1200px) {
     .python-runner-frame {
-        width: 350px;
+        width: calc(50vw - 140px);
+        min-width: 300px;
     }
     
     .main-content {
-        max-width: calc(100vw - 250px - 350px);
+        margin-right: calc(50vw - 140px); /* Match runner frame width */
     }
 }
 
@@ -936,7 +975,7 @@ header p {
     
     .main-content {
         margin-left: 0;
-        max-width: 100%;
+        margin-right: 0; /* Reset to normal margin on mobile */
         padding: 1rem;
     }
     
@@ -945,7 +984,7 @@ header p {
         width: 100%;
         height: 400px;
         border-left: none;
-        border-top: 2px solid #667eea;
+        border-top: 2px solid #666;
     }
     
     .sidebar {
@@ -980,21 +1019,31 @@ header p {
 
 /* Adjust main content when runner is collapsed */
 .python-runner-frame.collapsed ~ .main-content {
-    max-width: calc(100vw - 250px - 60px);
+    margin-right: 60px; /* Match collapsed runner width */
 }
 
-@media (max-width: 768px) {
-    .python-runner-frame.collapsed {
-        width: 100%;
-        height: 60px;
-    }
-    
-    .python-runner-frame.collapsed .runner-header {
-        writing-mode: horizontal-tb;
-        padding: 1rem 1.5rem;
-    }
-    
-    .python-runner-frame.collapsed ~ .main-content {
-        max-width: 100%;
-    }
-} 
+/* Ensure proper scrolling in code editor */
+.code-editor-container .code-editor {
+    scrollbar-width: thin;
+    scrollbar-color: #4a5568 #2d3748;
+}
+
+.code-editor-container .code-editor::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.code-editor-container .code-editor::-webkit-scrollbar-track {
+    background: #2d3748;
+}
+
+.code-editor-container .code-editor::-webkit-scrollbar-thumb {
+    background: #4a5568;
+    border-radius: 4px;
+}
+
+.code-editor-container .code-editor::-webkit-scrollbar-thumb:hover {
+    background: #718096;
+}
+
+ 

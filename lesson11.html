@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson 11: Dictionaries - Python Learning Course</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=1751263721">
+    <script src="https://cdn.jsdelivr.net/npm/brython@3.12.0/brython.min.js"></script>
 </head>
 <body>
     <div class="page-container">
@@ -92,28 +93,22 @@
                     
                     <h3>Example 1: Creating a Dictionary</h3>
                     <div class="code-block">
-                        <pre><code>person = {"name": "Alice", "age": 25}
-print(person)</code></pre>
+                        
                     </div>
                     <p>This will output: <code>{'name': 'Alice', 'age': 25}</code></p>
 
                     <h3>Example 2: Accessing Dictionary Values</h3>
                     <div class="code-block">
-                        <pre><code>person = {"name": "Alice", "age": 25}
-print(person["name"])
-print(person["age"])</code></pre>
+                        
                     </div>
                     <p>This will output:</p>
                     <div class="code-block">
-                        <pre><code>Alice
-25</code></pre>
+                        
                     </div>
 
                     <h3>Example 3: Adding New Key-Value Pairs</h3>
                     <div class="code-block">
-                        <pre><code>person = {"name": "Alice", "age": 25}
-person["city"] = "New York"
-print(person)</code></pre>
+                        
                     </div>
                     <p>This will output: <code>{'name': 'Alice', 'age': 25, 'city': 'New York'}</code></p>
                 </div>
@@ -130,53 +125,97 @@ print(person)</code></pre>
                     </ul>
                 </div>
 
-                <div class="practice-box">
-                    <h3>🎯 Practice</h3>
-                    <p>Create a dictionary for a book (title, author, year).</p>
+                <div class="lesson-section">
+                    <h2>💡 Key Concepts</h2>
+                    <div class="concept-grid">
+                        <div class="concept-item">
+                            <h3>📚 Creating Dictionaries</h3>
+                            <p>Store data as key-value pairs:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                        
+                        <div class="concept-item">
+                            <h3>🔍 Accessing Values</h3>
+                            <p>Get values using their keys:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                        
+                        <div class="concept-item">
+                            <h3>➕ Adding/Updating</h3>
+                            <p>Add new or update existing key-value pairs:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="challenge-box">
-                    <h3>🚀 Extra Challenge</h3>
-                    <p>Create a dictionary of your favorite movies and their ratings.</p>
+                <div class="lesson-section">
+                    <h2>🎯 Practice Exercises</h2>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 1: Book Information</h3>
+                        <p>Create a dictionary for a book with title, author, and year, then print each piece of information.</p>
+                        <div class="hint">
+                            <strong>Hint:</strong> book = {"title": "...", "author": "...", "year": 2023}
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 2: Dictionary Operations</h3>
+                        <p>Create a dictionary, add new key-value pairs, update existing values, and remove an item.</p>
+                        <div class="hint">
+                            <strong>Hint:</strong> Use dict[key] = value to add/update, del dict[key] to remove.
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Bottom Navigation -->
-                <div class="bottom-nav">
-                    <a href="lesson10.html" class="nav-button prev">Previous: Functions</a>
-                    <a href="lesson12.html" class="nav-button next">Next: Simple Error Handling</a>
+                <div class="lesson-section">
+                    <h2>🏆 Challenge</h2>
+                    <div class="challenge">
+                        <h3>Challenge: Movie Rating System</h3>
+                        <p>Create a dictionary of your favorite movies and their ratings, then find the highest-rated movie.</p>
+                        <div class="hint">
+                            <strong>Hint:</strong> Use max(movies, key=movies.get) to find the movie with highest rating.
+                        </div>
+                    </div>
+                
+            </div>
+
+            <!-- Python Runner Frame -->
+            <div class="python-runner-frame">
+                <div class="runner-header">
+                    <h3>🐍 Python Editor</h3>
+                    <button class="runner-toggle" onclick="togglePythonRunner()">◀</button>
+                </div>
+                <div class="runner-content">
+                    <div class="runner-editor">
+                        <div class="code-editor-container">
+                            <div class="line-numbers" id="lineNumbers">1</div>
+                            <textarea id="pythonCode" class="code-editor" spellcheck="false" placeholder="Enter your Python code here..."></textarea>
+                        </div>
+                    </div>
+                    <div class="runner-controls">
+                        <button class="run-button" onclick="runPythonCode()">
+                            <span>▶️ Run Code</span>
+                        </button>
+                        <button class="clear-button" onclick="clearPythonCode()">
+                            🗑️ Clear
+                        </button>
+                    </div>
+                    <div class="runner-output">
+                        <div class="output-header">
+                            <h4>Output:</h4>
+                        </div>
+                        <div id="output" class="output-display">
+                            <em>Click "Run Code" to see the output here</em>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
-
-        <!-- Python Runner Frame -->
-        <div class="python-runner-frame">
-            <div class="runner-header">
-                <h3>🐍 Python Editor</h3>
-                <button class="runner-toggle" onclick="togglePythonRunner()">◀</button>
-            </div>
-            <div class="runner-content">
-                <div class="runner-editor">
-                    <textarea id="pythonCode" class="code-editor" placeholder="Enter your Python code here..."></textarea>
-                </div>
-                <div class="runner-controls">
-                    <button class="run-button" onclick="runPythonCode()">
-                        <span>▶️ Run Code</span>
-                    </button>
-                    <button class="clear-button" onclick="clearPythonCode()">
-                        🗑️ Clear
-                    </button>
-                </div>
-                <div class="runner-output">
-                    <div class="output-header">
-                        <h4>Output:</h4>
-                    </div>
-                    <div id="output" class="output-display">
-                        <em>Click "Run Code" to see the output here</em>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js?v=1751263721"></script>
 </body>
-</html> 
+</html>

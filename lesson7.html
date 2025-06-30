@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson 7: Number Guessing Game - Python Learning Course</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=1751263721">
+    <script src="https://cdn.jsdelivr.net/npm/brython@3.12.0/brython.min.js"></script>
 </head>
 <body>
     <div class="page-container">
@@ -102,32 +103,12 @@
                     </ul>
                 </div>
 
-                <div class="lesson-section">
+                <!-- <div class="lesson-section">
                     <h2>Complete Game Code</h2>
                     <div class="code-block">
-                        <pre><code>import random
-
-# Generate random number between 1 and 20
-secret_number = random.randint(1, 20)
-guesses = 0
-
-print("I'm thinking of a number between 1 and 20!")
-
-while True:
-    # Get user's guess
-    guess = int(input("Enter your guess: "))
-    guesses += 1
-    
-    # Check the guess
-    if guess < secret_number:
-        print("Too low!")
-    elif guess > secret_number:
-        print("Too high!")
-    else:
-        print(f"Correct! You got it in {guesses} guesses!")
-        break</code></pre>
+                        
                     </div>
-                </div>
+                </div> -->
 
                 <div class="lesson-section">
                     <h2>How It Works</h2>
@@ -141,48 +122,97 @@ while True:
                     </ol>
                 </div>
 
-                <div class="challenge-box">
-                    <h3>🚀 Extra Challenge</h3>
-                    <p>Add a score counter to the game.</p>
+                <div class="lesson-section">
+                    <h2>💡 Key Concepts</h2>
+                    <div class="concept-grid">
+                        <div class="concept-item">
+                            <h3>🎲 Random Numbers</h3>
+                            <p>Generate random numbers for games:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                        
+                        <div class="concept-item">
+                            <h3>🔄 While Loop</h3>
+                            <p>Repeat code until a condition is met:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                        
+                        <div class="concept-item">
+                            <h3>🛑 Break Statement</h3>
+                            <p>Exit a loop when a condition is met:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Bottom Navigation -->
-                <div class="bottom-nav">
-                    <a href="lesson6.html" class="nav-button prev">Previous: Conditions and If-Else</a>
-                    <a href="lesson8.html" class="nav-button next">Next: Lists</a>
+                <div class="lesson-section">
+                    <h2>🎯 Practice Exercises</h2>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 1: Simple Guessing Game</h3>
+                        <p>Create a guessing game where the user tries to guess a number between 1 and 10.</p>
+                        <div class="hint">
+                            <strong>Hint:</strong> Use random.randint(1, 10) and a while loop with break when correct.
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 2: Counting Loop</h3>
+                        <p>Use a while loop to count from 1 to 10 and print each number.</p>
+                        <div class="hint">
+                            <strong>Hint:</strong> Start with count = 1, use while count <= 10, and increment count += 1.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-section">
+                    <h2>🏆 Challenge</h2>
+                    <div class="challenge">
+                        <h3>Challenge: Enhanced Guessing Game</h3>
+                        <p>Create a guessing game with hints ("too high" or "too low"), limit guesses to 5, and add a score counter.</p>
+                        <div class="hint">
+                            <strong>Hint:</strong> Use a counter for attempts and provide feedback based on comparison with the target number.
+                        </div>
+                    </div>
+                
+            </div>
+
+            <!-- Python Runner Frame -->
+            <div class="python-runner-frame">
+                <div class="runner-header">
+                    <h3>🐍 Python Editor</h3>
+                    <button class="runner-toggle" onclick="togglePythonRunner()">◀</button>
+                </div>
+                <div class="runner-content">
+                    <div class="runner-editor">
+                        <div class="code-editor-container">
+                            <div class="line-numbers" id="lineNumbers">1</div>
+                            <textarea id="pythonCode" class="code-editor" spellcheck="false" placeholder="Enter your Python code here..."></textarea>
+                        </div>
+                    </div>
+                    <div class="runner-controls">
+                        <button class="run-button" onclick="runPythonCode()">
+                            <span>▶️ Run Code</span>
+                        </button>
+                        <button class="clear-button" onclick="clearPythonCode()">
+                            🗑️ Clear
+                        </button>
+                    </div>
+                    <div class="runner-output">
+                        <div class="output-header">
+                            <h4>Output:</h4>
+                        </div>
+                        <div id="output" class="output-display">
+                            <em>Click "Run Code" to see the output here</em>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
-
-        <!-- Python Runner Frame -->
-        <div class="python-runner-frame">
-            <div class="runner-header">
-                <h3>🐍 Python Editor</h3>
-                <button class="runner-toggle" onclick="togglePythonRunner()">◀</button>
-            </div>
-            <div class="runner-content">
-                <div class="runner-editor">
-                    <textarea id="pythonCode" class="code-editor" placeholder="Enter your Python code here..."></textarea>
-                </div>
-                <div class="runner-controls">
-                    <button class="run-button" onclick="runPythonCode()">
-                        <span>▶️ Run Code</span>
-                    </button>
-                    <button class="clear-button" onclick="clearPythonCode()">
-                        🗑️ Clear
-                    </button>
-                </div>
-                <div class="runner-output">
-                    <div class="output-header">
-                        <h4>Output:</h4>
-                    </div>
-                    <div id="output" class="output-display">
-                        <em>Click "Run Code" to see the output here</em>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js?v=1751263721"></script>
 </body>
-</html> 
+</html>

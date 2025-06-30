@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson 4: String Manipulation - Python Learning Course</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=1751263721">
+    <script src="https://cdn.jsdelivr.net/npm/brython@3.12.0/brython.min.js"></script>
 </head>
 <body>
     <div class="page-container">
@@ -92,29 +93,22 @@
                     
                     <h3>Example 1: String Concatenation</h3>
                     <div class="code-block">
-                        <pre><code>first = "Alice"
-last = "Smith"
-print(first + " " + last)</code></pre>
+                        
                     </div>
                     <p>This will output: <code>Alice Smith</code></p>
 
                     <h3>Example 2: String Methods</h3>
                     <div class="code-block">
-                        <pre><code>text = "hello world"
-print(text.upper())
-print(text.capitalize())</code></pre>
+                        
                     </div>
                     <p>This will output:</p>
                     <div class="code-block">
-                        <pre><code>HELLO WORLD
-Hello world</code></pre>
+                        
                     </div>
 
                     <h3>Example 3: F-Strings (String Formatting)</h3>
                     <div class="code-block">
-                        <pre><code>name = "Alice"
-age = 25
-print(f"{name} is {age} years old")</code></pre>
+                        
                     </div>
                     <p>This will output: <code>Alice is 25 years old</code></p>
                 </div>
@@ -131,53 +125,104 @@ print(f"{name} is {age} years old")</code></pre>
                     </ul>
                 </div>
 
-                <div class="practice-box">
-                    <h3>🎯 Practice</h3>
-                    <p>Ask for first and last name. Print: "Hello, FIRST LAST!"</p>
+                <div class="lesson-section">
+                    <h2>💡 Key Concepts</h2>
+                    <div class="concept-grid">
+                        <div class="concept-item">
+                            <h3>➕ String Concatenation</h3>
+                            <p>Join strings together using the + operator:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                        
+                        <div class="concept-item">
+                            <h3>🔄 String Methods</h3>
+                            <p>Transform strings with built-in methods:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                        
+                        <div class="concept-item">
+                            <h3>🔤 Escaping Quotes</h3>
+                            <p>Use quotes inside strings with escape characters:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                        
+                        <div class="concept-item">
+                            <h3>📝 F-String Formatting</h3>
+                            <p>Insert variables into strings with f-strings:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="challenge-box">
-                    <h3>🚀 Extra Challenge</h3>
-                    <p>Print your name in all caps.</p>
+                <div class="lesson-section">
+                    <h2>🎯 Practice Exercises</h2>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 1: Name Formatter</h3>
+                        <p>Create variables for first and last name. Print: "Hello, FIRST LAST!" using string concatenation.</p>
+                        <div class="hint">
+                            <strong>Hint:</strong> Use the + operator to combine strings and .upper() method for uppercase.
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 2: String Methods Practice</h3>
+                        <p>Create a string with mixed case and demonstrate different string methods (.upper(), .lower(), .title(), .capitalize()).</p>
+                        <div class="hint">
+                            <strong>Hint:</strong> Try "hELLo WoRLd" and apply each method to see the differences.
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Bottom Navigation -->
-                <div class="bottom-nav">
-                    <a href="lesson3.html" class="nav-button prev">Previous: Basic Arithmetic</a>
-                    <a href="lesson5.html" class="nav-button next">Next: Input from User</a>
+                <div class="lesson-section">
+                    <h2>🏆 Challenge</h2>
+                    <div class="challenge">
+                        <h3>Challenge: Quote Generator</h3>
+                        <p>Create a program that uses f-strings to generate a quote with escaped quotes. Include the author's name and their famous saying.</p>
+                        <div class="hint">
+                            <strong>Hint:</strong> Use f-strings like f'{author} said, "Quote goes here"' or escape quotes with backslashes.
+                        </div>
+                    </div>
+                
+            </div>
+
+            <!-- Python Runner Frame -->
+            <div class="python-runner-frame">
+                <div class="runner-header">
+                    <h3>🐍 Python Editor</h3>
+                    <button class="runner-toggle" onclick="togglePythonRunner()">◀</button>
+                </div>
+                <div class="runner-content">
+                    <div class="runner-editor">
+                        <div class="code-editor-container">
+                            <div class="line-numbers" id="lineNumbers">1</div>
+                            <textarea id="pythonCode" class="code-editor" spellcheck="false" placeholder="Enter your Python code here..."></textarea>
+                        </div>
+                    </div>
+                    <div class="runner-controls">
+                        <button class="run-button" onclick="runPythonCode()">
+                            <span>▶️ Run Code</span>
+                        </button>
+                        <button class="clear-button" onclick="clearPythonCode()">
+                            🗑️ Clear
+                        </button>
+                    </div>
+                    <div class="runner-output">
+                        <div class="output-header">
+                            <h4>Output:</h4>
+                        </div>
+                        <div id="output" class="output-display">
+                            <em>Click "Run Code" to see the output here</em>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
-
-        <!-- Python Runner Frame -->
-        <div class="python-runner-frame">
-            <div class="runner-header">
-                <h3>🐍 Python Editor</h3>
-                <button class="runner-toggle" onclick="togglePythonRunner()">◀</button>
-            </div>
-            <div class="runner-content">
-                <div class="runner-editor">
-                    <textarea id="pythonCode" class="code-editor" placeholder="Enter your Python code here..."></textarea>
-                </div>
-                <div class="runner-controls">
-                    <button class="run-button" onclick="runPythonCode()">
-                        <span>▶️ Run Code</span>
-                    </button>
-                    <button class="clear-button" onclick="clearPythonCode()">
-                        🗑️ Clear
-                    </button>
-                </div>
-                <div class="runner-output">
-                    <div class="output-header">
-                        <h4>Output:</h4>
-                    </div>
-                    <div id="output" class="output-display">
-                        <em>Click "Run Code" to see the output here</em>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js?v=1751263721"></script>
 </body>
-</html> 
+</html>

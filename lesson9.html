@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson 9: Loops - Python Learning Course</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=1751263721">
+    <script src="https://cdn.jsdelivr.net/npm/brython@3.12.0/brython.min.js"></script>
 </head>
 <body>
     <div class="page-container">
@@ -92,36 +93,25 @@
                     
                     <h3>Example 1: Range Loop</h3>
                     <div class="code-block">
-                        <pre><code>for i in range(5):
-    print(i)</code></pre>
+                        
                     </div>
                     <p>This will output:</p>
                     <div class="code-block">
-                        <pre><code>0
-1
-2
-3
-4</code></pre>
+                        
                     </div>
 
                     <h3>Example 2: List Loop</h3>
                     <div class="code-block">
-                        <pre><code>for fruit in ["apple", "banana"]:
-    print(fruit)</code></pre>
+                        
                     </div>
                     <p>This will output:</p>
                     <div class="code-block">
-                        <pre><code>apple
-banana</code></pre>
+                        
                     </div>
 
                     <h3>Example 3: Sum with Loop</h3>
                     <div class="code-block">
-                        <pre><code>numbers = [1, 2, 3]
-total = 0
-for num in numbers:
-    total += num
-print(total)</code></pre>
+                        
                     </div>
                     <p>This will output: <code>6</code></p>
                 </div>
@@ -136,53 +126,97 @@ print(total)</code></pre>
                     </ul>
                 </div>
 
-                <div class="practice-box">
-                    <h3>🎯 Practice</h3>
-                    <p>Ask for 3 favorite foods. Print each.</p>
+                <div class="lesson-section">
+                    <h2>💡 Key Concepts</h2>
+                    <div class="concept-grid">
+                        <div class="concept-item">
+                            <h3>🔢 Range Loops</h3>
+                            <p>Repeat code a specific number of times:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                        
+                        <div class="concept-item">
+                            <h3>📋 List Loops</h3>
+                            <p>Go through each item in a list:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                        
+                        <div class="concept-item">
+                            <h3>🧮 Loop Calculations</h3>
+                            <p>Use loops to perform calculations:</p>
+                            <div class="code-block">
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="challenge-box">
-                    <h3>🚀 Extra Challenge</h3>
-                    <p>Print a multiplication table for a number.</p>
+                <div class="lesson-section">
+                    <h2>🎯 Practice Exercises</h2>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 1: Favorite Foods Collection</h3>
+                        <p>Ask for 3 favorite foods and print each one with its position number.</p>
+                        <div class="hint">
+                            <strong>Hint:</strong> Use a for loop with range(3) to collect inputs and enumerate to print with numbers.
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 2: Sum Calculator</h3>
+                        <p>Use a for loop to calculate the sum of numbers from 1 to 100.</p>
+                        <div class="hint">
+                            <strong>Hint:</strong> Initialize sum = 0, then use for i in range(1, 101): sum += i.
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Bottom Navigation -->
-                <div class="bottom-nav">
-                    <a href="lesson8.html" class="nav-button prev">Previous: Lists</a>
-                    <a href="lesson10.html" class="nav-button next">Next: Functions</a>
+                <div class="lesson-section">
+                    <h2>🏆 Challenge</h2>
+                    <div class="challenge">
+                        <h3>Challenge: Multiplication Table</h3>
+                        <p>Ask for a number and print its multiplication table from 1 to 12.</p>
+                        <div class="hint">
+                            <strong>Hint:</strong> Use a for loop with range(1, 13) and multiply the input number by each value.
+                        </div>
+                    </div>
+                
+            </div>
+
+            <!-- Python Runner Frame -->
+            <div class="python-runner-frame">
+                <div class="runner-header">
+                    <h3>🐍 Python Editor</h3>
+                    <button class="runner-toggle" onclick="togglePythonRunner()">◀</button>
+                </div>
+                <div class="runner-content">
+                    <div class="runner-editor">
+                        <div class="code-editor-container">
+                            <div class="line-numbers" id="lineNumbers">1</div>
+                            <textarea id="pythonCode" class="code-editor" spellcheck="false" placeholder="Enter your Python code here..."></textarea>
+                        </div>
+                    </div>
+                    <div class="runner-controls">
+                        <button class="run-button" onclick="runPythonCode()">
+                            <span>▶️ Run Code</span>
+                        </button>
+                        <button class="clear-button" onclick="clearPythonCode()">
+                            🗑️ Clear
+                        </button>
+                    </div>
+                    <div class="runner-output">
+                        <div class="output-header">
+                            <h4>Output:</h4>
+                        </div>
+                        <div id="output" class="output-display">
+                            <em>Click "Run Code" to see the output here</em>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
-
-        <!-- Python Runner Frame -->
-        <div class="python-runner-frame">
-            <div class="runner-header">
-                <h3>🐍 Python Editor</h3>
-                <button class="runner-toggle" onclick="togglePythonRunner()">◀</button>
-            </div>
-            <div class="runner-content">
-                <div class="runner-editor">
-                    <textarea id="pythonCode" class="code-editor" placeholder="Enter your Python code here..."></textarea>
-                </div>
-                <div class="runner-controls">
-                    <button class="run-button" onclick="runPythonCode()">
-                        <span>▶️ Run Code</span>
-                    </button>
-                    <button class="clear-button" onclick="clearPythonCode()">
-                        🗑️ Clear
-                    </button>
-                </div>
-                <div class="runner-output">
-                    <div class="output-header">
-                        <h4>Output:</h4>
-                    </div>
-                    <div id="output" class="output-display">
-                        <em>Click "Run Code" to see the output here</em>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js?v=1751263721"></script>
 </body>
-</html> 
+</html>
